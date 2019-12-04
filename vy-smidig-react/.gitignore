@@ -26,3 +26,8 @@ tags
 ctags
 .tags
 .ctags
+
+./package-lock.json
+
+# env files with stuff not intended for public eyes
+.env

@@ -5,13 +5,14 @@ import 'react-dates/lib/css/_datepicker.css';
 
 // reactstrap components
 import {
-    Container,
+    Container
 } from "reactstrap";
 
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
 import DefaultDatePicker from "components/Datepicker/DefaultDatepicker.js";
+import PlacesAutoComplete from "components/GooglePlaces/PlacesAutoComplete";
 
 function LandingPage() {
     const [firstFocus, setFirstFocus] = React.useState(false);
@@ -26,8 +27,7 @@ function LandingPage() {
             document.body.classList.remove("login-page");
             document.body.classList.remove("sidebar-collapse");
         };
-    })
-
+    });
     return (
         <>
             <ExamplesNavbar />
@@ -38,9 +38,12 @@ function LandingPage() {
                         backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
                     }}
                 ></div>
-                <Container>
-                    <DefaultDatePicker />
-                </Container>
+                <div className="content">
+                    <Container>
+                        <DefaultDatePicker />
+                        <PlacesAutoComplete />
+                    </Container>
+                </div>
                 <TransparentFooter />
             </div>
         </>
