@@ -3,7 +3,7 @@ import json
 import googlemaps
 from datetime import datetime
 
-gmaps = googlemaps.Client(key='')
+gmaps = googlemaps.Client(key='AIzaSyDvoyHy84MTpSBbIi841h7YYBxhqjeWFt4')
 
 # Geocoding an address
 #geocode_result = gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA')
@@ -27,6 +27,6 @@ for leg in directions_result[0]['legs']:
    for step in leg['steps']:
         distance = step['distance']['text']
         time     = step['duration']['text']
-        mode     = step['travel_mode']['text']
-        print(distance+ " " + time + " with " + mode)
+        #mode     = step['travel_mode']['text']
+        print(distance+ " " + time)
         
