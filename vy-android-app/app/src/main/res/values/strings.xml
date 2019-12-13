@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Vy 3000</string>
-    <string name="title_search">Search</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_search">Reisesøk</string>
+    <string name="title_dashboard">Ruter</string>
+    <string name="title_notifications">Billetter</string>
+    <string name="boarding_text">You have now boarded the train</string>
 </resources>

@@ -8,9 +8,11 @@ public class SearchViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
+
+
     public SearchViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Search");
+        mText.setValue("Hello");
     }
 
     public LiveData<String> getText() {
