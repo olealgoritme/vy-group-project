@@ -2,21 +2,21 @@ package com.lemon.vy3000;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.lemon.vy3000.beacon.AltBeaconManager;
+import com.lemon.vy3000.ui.dashboard.DashboardFragment;
+import com.lemon.vy3000.ui.home.SearchFragment;
+import com.lemon.vy3000.ui.notifications.NotificationsFragment;
+import com.lemon.vy3000.vy.VYApp;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -44,33 +44,72 @@ public class MainActivity extends AppCompatActivity {
             NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
             NavigationUI.setupWithNavController(navView, navController);
 
+            checkForNotificationFeedback();
+            enableNotifications();
+            enablePosition();
+        }
 
-            // Android M Permission check 
-            if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("This app needs location access");
-                builder.setMessage("Please grant location access so this app can detect beacons.");
-                builder.setPositiveButton(android.R.string.ok, null);
-                builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialog) {
-                        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
-                    }
-                });
-                builder.show();
+    private void checkForNotificationFeedback() {
+        // Launched from Notification intent?
+        String feedback = getIntent().getStringExtra("notiFeedback");
+
+        // Definitely launched from notify (pending) intent
+        if (feedback != null) {
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+            switch (feedback) {
+
+                case "tripEnded":
+                    VYApp.tripEnded = true;
+                    SearchFragment sFrag = new SearchFragment();
+                    fragmentTransaction.replace(android.R.id.content, sFrag);
+                    break;
+                case "correct":
+                    VYApp.hasBoarded = true;
+                    SearchFragment searchFragment = new SearchFragment();
+                    fragmentTransaction.replace(android.R.id.content, searchFragment);
+                    break;
+
+                case "addPassengers":
+                    VYApp.hasBoarded = true;
+                    NotificationsFragment notificationFragment = new NotificationsFragment();
+                    fragmentTransaction.replace(android.R.id.content, notificationFragment);
+
+                    break;
+                case "moreInfo":
+                    DashboardFragment dashboardFragment = new DashboardFragment();
+                    fragmentTransaction.replace(android.R.id.content, dashboardFragment);
+                    break;
             }
 
-            // check overlay permission (for sending toast/snacks without activity
-            /*if (this.checkSelfPermission(Manifest.permission.SYSTEM_ALERT_WINDOW) != PackageManager.PERMISSION_GRANTED) {
-                int REQUEST_CODE = 101;
-                Intent myIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-                myIntent.setData(Uri.parse("package:" + getPackageName()));
-                startActivityForResult(myIntent, REQUEST_CODE);
-            }*/
+            // Remove notifications
+            NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.cancelAll();
+        }
+    }
 
-            startService(new Intent(this, AltBeaconManager.class));
+    private void enablePosition() {
 
-            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // Android M Permission check 
+        if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("VY needs your position");
+            builder.setMessage("Please enable your position to let us give you a better experience");
+            builder.setPositiveButton(android.R.string.ok, null);
+            builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
+                }
+            });
+            builder.show();
+        }
+    }
+
+    private void enableNotifications() {
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 String CHANNEL_ID = "vy";
@@ -82,10 +121,12 @@ public class MainActivity extends AppCompatActivity {
                 mChannel.enableLights(true);
                 mChannel.setLightColor(Color.RED);
                 mChannel.enableVibration(true);
-                mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
-                mChannel.setShowBadge(false);
+                mChannel.setVibrationPattern(new long[]{400, 200, 200, 400});
+                mChannel.setShowBadge(true);
+                assert notificationManager != null;
                 notificationManager.createNotificationChannel(mChannel);
             }
+
         }
 
 
