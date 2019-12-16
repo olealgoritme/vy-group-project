@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.LEG_MAIN_COLUMN_WIDTHS=void 0;e.LEG_MAIN_COLUMN_WIDTHS={FIRST:60,SECOND:12}},1350,[]);

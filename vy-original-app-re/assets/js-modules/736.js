@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos",width:48,height:48,scales:[1,2,3],hash:"8651a89a4f712c6d87c337f3a24357ce",name:"ic_ruter_color",type:"png"})},736,[152]);

@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/passenger-categories",width:50,height:50,scales:[1,2,3],hash:"4608c07490789c906b7800a5a10333a0",name:"barnevogn",type:"png"})},851,[152]);

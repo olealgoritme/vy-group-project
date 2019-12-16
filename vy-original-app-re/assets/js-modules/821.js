@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/ticket",width:22,height:22,scales:[1,2,3],hash:"a80c982e20c09efe11899c5a4e77dd28",name:"periodTicket_green",type:"png"})},821,[152]);

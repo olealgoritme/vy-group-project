@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/profile",width:66,height:49,scales:[1,2,3],hash:"79ff8849406908614543ba2384797d47",name:"mountain",type:"png"})},878,[152]);

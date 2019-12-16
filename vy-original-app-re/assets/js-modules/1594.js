@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){var n=r(d[0]),o=new n(512),t=new n(256);!(function(){for(var n=1,u=0;u<255;u++)o[u]=n,t[n]=u,256&(n<<=1)&&(n^=285);for(u=255;u<512;u++)o[u]=o[u-255]})(),e.log=function(n){if(n<1)throw new Error('log('+n+')');return t[n]},e.exp=function(n){return o[n]},e.mul=function(n,u){return 0===n||0===u?0:o[t[n]+t[u]]}},1594,[1582]);

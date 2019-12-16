@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/arrows",width:26,height:26,scales:[1,2,3],hash:"85e9ec48dc276c611dd637591a7059e2",name:"up_white_ios",type:"png"})},904,[152]);

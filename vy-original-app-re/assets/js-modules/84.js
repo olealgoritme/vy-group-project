@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){'use strict';if(!g.RN$Bridgeless){var l=r(d[0]).polyfillGlobal,t=function(t){l(t,function(){return r(d[1])[t]})};t('setTimeout'),t('setInterval'),t('setImmediate'),t('clearTimeout'),t('clearInterval'),t('clearImmediate'),t('requestAnimationFrame'),t('cancelAnimationFrame'),t('requestIdleCallback'),t('cancelIdleCallback')}},84,[76,85]);

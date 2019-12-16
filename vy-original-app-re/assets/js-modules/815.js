@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/ticket-details",width:15,height:12,scales:[1,2,3],hash:"08477d342efb57dcb1421f6f3eb1c3b5",name:"car",type:"png"})},815,[152]);

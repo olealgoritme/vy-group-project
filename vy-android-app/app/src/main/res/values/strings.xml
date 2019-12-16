@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Vy</string>
-    <string name="title_search">Reisesøk</string>
-    <string name="title_dashboard">Ruter</string>
-    <string name="title_notifications">Billetter</string>
+    <string name="title_search">Search</string>
+    <string name="title_ruter">Ruter</string>
+    <string name="title_tickets">Tickets</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_profile">Profile</string>
 </resources>

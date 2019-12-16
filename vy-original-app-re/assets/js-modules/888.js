@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/bybil",width:64,height:14,scales:[1,2,3],hash:"4f69453177aee171b7c3cd31bf487273",name:"mapboxLogo",type:"png"})},888,[152]);

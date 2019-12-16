@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){'use strict';m.exports='object'==typeof self&&self.self===self&&self||'object'==typeof g&&g.global===g&&g||this},1580,[]);

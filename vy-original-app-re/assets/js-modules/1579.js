@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){'use strict';var t=r(d[0]);m.exports=function(){return'function'==typeof t.Promise&&'function'==typeof t.Promise.prototype.then}},1579,[1580]);

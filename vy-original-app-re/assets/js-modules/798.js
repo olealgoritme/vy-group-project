@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/transport-modes",width:18,height:18,scales:[1,2,3],hash:"cbdec0135076947d71e309d6913ec053",name:"tram",type:"png"})},798,[152]);

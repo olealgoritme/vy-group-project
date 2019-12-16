@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/payment",width:33,height:36,scales:[1,2,3],hash:"6ba5d951b81b0a13c187586cb4ea8913",name:"mastercard",type:"png"})},760,[152]);

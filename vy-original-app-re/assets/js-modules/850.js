@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/passenger-categories",width:50,height:50,scales:[1,2,3],hash:"0e8df42f7f13080f1c7010e0a784812c",name:"sykkel",type:"png"})},850,[152]);

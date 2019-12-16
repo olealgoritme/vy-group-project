@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){'use strict';var t,u=(t=r(d[0]))&&t.__esModule?t:{default:t};var p={captureHeap:function(t){var p=null;try{g.nativeCaptureHeap(t),console.log('HeapCapture.captureHeap succeeded: '+t)}catch(t){console.log('HeapCapture.captureHeap error: '+t.toString()),p=t.toString()}u.default&&u.default.captureComplete(t,p)}};m.exports=p},120,[121]);

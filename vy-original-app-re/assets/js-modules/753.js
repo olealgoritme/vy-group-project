@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos/nettbuss",width:147,height:20,scales:[1,2,3],hash:"11f03306dfae0438c82654e21a2ee8c7",name:"nor_way_bussekspress",type:"png"})},753,[152]);

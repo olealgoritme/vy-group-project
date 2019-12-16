@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.IS_LOADING=e.IS_NOT_STARTED=e.WITH_ERROR=e.LOADING=e.NOT_STARTED=void 0;e.NOT_STARTED={notStarted:!0};e.LOADING={loading:!0};e.WITH_ERROR=function(n){return{message:void 0===n?'':n,error:!0}};e.IS_NOT_STARTED=function(n){return!!n.notStarted};e.IS_LOADING=function(n){return!!n.loading}},1830,[]);

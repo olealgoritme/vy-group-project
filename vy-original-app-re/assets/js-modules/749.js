@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos/nettbuss",width:94,height:20,scales:[1,2,3],hash:"399bc0adb4e7c407bd9be3e24ed0707f",name:"vy_express_plus",type:"png"})},749,[152]);

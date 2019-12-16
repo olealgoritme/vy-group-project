@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/profile",width:33,height:35,scales:[1,2,3],hash:"63c50651d5abd8026bc79e026e9848be",name:"newProfile",type:"png"})},874,[152]);

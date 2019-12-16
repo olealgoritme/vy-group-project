@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/tab-icons",width:26,height:20,scales:[1,2,3],hash:"72e2d45e42c27c2797e42e16c31aee4f",name:"billetterGreen",type:"png"})},954,[152]);

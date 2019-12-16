@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos",width:48,height:48,scales:[1,2,3],hash:"79fe140d234f01afca317c3967562a3a",name:"ic_vkt_grey",type:"png"})},744,[152]);

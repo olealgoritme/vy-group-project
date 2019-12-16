@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.createReducerStateStore=function(n,t){var u=t,c=[];return{subscribe:function(n){return c.push(n),function(){c=c.filter(function(t){return t!==n})}},dispatch:function(t){u=n(u,t),c.forEach(function(n){n()})},get:function(){return u}}}},1647,[]);

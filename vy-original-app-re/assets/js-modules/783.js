@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/transport-modes/train-icon",width:36,height:36,scales:[1,2,3],hash:"4cc57af93ab7d94f28cd15a83fd95e5d",name:"mediumGrey",type:"png"})},783,[152]);

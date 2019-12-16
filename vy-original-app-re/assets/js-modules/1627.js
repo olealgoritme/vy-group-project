@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var t=r(d[0]),l=r(d[1]),o=t.StyleSheet.create({container:{flex:1,justifyContent:'flex-start',alignItems:'stretch',alignSelf:'stretch',backgroundColor:l.colors.brightGrey},ticketListWithoutSections:{paddingVertical:60}});e.default=o},1627,[10,414]);

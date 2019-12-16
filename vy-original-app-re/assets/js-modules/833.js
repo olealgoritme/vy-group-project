@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/inspection",width:31,height:31,scales:[1,2,3],hash:"524214345698383df0ec773fa9dca667",name:"sovekup",type:"png"})},833,[152]);

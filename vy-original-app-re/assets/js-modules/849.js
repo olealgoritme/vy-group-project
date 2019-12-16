@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/tilbud-ombord",width:23,height:23,scales:[1,2,3],hash:"d188d46283178e32acbd5a13055c1b57",name:"wheelchair",type:"png"})},849,[152]);

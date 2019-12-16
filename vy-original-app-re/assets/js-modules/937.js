@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/general",width:22,height:22,scales:[1,2,3],hash:"59f1ecf748e52658c5a18a7acd6ddc27",name:"question",type:"png"})},937,[152]);

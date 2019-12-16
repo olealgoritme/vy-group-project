@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos/nettbuss",width:55,height:20,scales:[1,2,3],hash:"c59e569428adc4074fb19e0265b94015",name:"farte_no",type:"png"})},756,[152]);

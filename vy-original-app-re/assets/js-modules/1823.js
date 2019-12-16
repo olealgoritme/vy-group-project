@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.getLanguageName=e.LANGUAGES=void 0;var n,t=(n=r(d[0]))&&n.__esModule?n:{default:n};e.LANGUAGES={no:'no',en:'en'};e.getLanguageName=function(n){switch(n){case'no':case'nb':case'nn':return(0,t.default)('no');default:return(0,t.default)('en')}}},1823,[1824]);

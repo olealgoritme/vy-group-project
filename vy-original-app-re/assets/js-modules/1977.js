@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0});var t=r(d[0]),o=r(d[1]),n=(function(n){function s(t){var s=this.constructor,c=n.call(this,t)||this;return c.message=t,c.name=s.prototype.constructor.name,o.setPrototypeOf(c,s.prototype),c}return t.__extends(s,n),s})(Error);e.SentryError=n},1977,[1972,1978]);

@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos",width:48,height:48,scales:[1,2,3],hash:"458c79ed3707f1a2b1ddfeab1de5dd77",name:"ic_kolumbus_color",type:"png"})},727,[152]);

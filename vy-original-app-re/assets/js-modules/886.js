@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/bybil",width:10,height:15,scales:[1,2,3],hash:"28df80fb065f95fadce2b5ee60bc7548",name:"power",type:"png"})},886,[152]);

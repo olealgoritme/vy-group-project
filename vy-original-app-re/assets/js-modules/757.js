@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos",width:49,height:15,scales:[1,2,3],hash:"64f4d713442725220fe761783c9784b6",name:"mivai",type:"png"})},757,[152]);

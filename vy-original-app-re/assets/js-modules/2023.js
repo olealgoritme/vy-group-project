@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.SDK_VERSION=e.SDK_NAME=void 0;e.SDK_NAME="sentry.javascript.react-native";e.SDK_VERSION="1.0.9"},2023,[]);

@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.default=e.HORIZONTAL_MARGIN=void 0;var t=r(d[0]);e.HORIZONTAL_MARGIN=24;var n=t.StyleSheet.create({container:{marginHorizontal:24}});e.default=n},1175,[10]);

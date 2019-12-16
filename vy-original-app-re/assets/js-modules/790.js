@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/transport-modes/walk-icon",width:8,height:13,scales:[1,2,3],hash:"3163e27fffc030efead20f6699cf6e8e",name:"walk",type:"png"})},790,[152]);

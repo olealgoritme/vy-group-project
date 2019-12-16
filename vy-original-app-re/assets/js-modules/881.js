@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/bybil",width:31,height:29,scales:[1,2,3],hash:"faa91735e072164fa0e35ceeb43c62a8",name:"bybilHotspotGrey",type:"png"})},881,[152]);

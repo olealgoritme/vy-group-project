@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/tilbud-ombord",width:20,height:20,scales:[1,2,3],hash:"c9bfa283eeedcaf452a6ab5b98b9c4f9",name:"sykkel",type:"png"})},844,[152]);

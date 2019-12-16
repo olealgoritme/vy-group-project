@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/tilbud-ombord",width:20,height:20,scales:[1,2,3],hash:"3d41551df4c3870b6e6a43a702929da7",name:"rullestol",type:"png"})},838,[152]);

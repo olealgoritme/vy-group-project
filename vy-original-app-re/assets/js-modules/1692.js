@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var t=n(r(d[0])),u=r(d[1]),l=n(r(d[2]));function n(t){return t&&t.__esModule?t:{default:t}}var f=function(n){var f=n.children;return t.default.createElement(u.SmallText,{secondary:!0,style:l.default.mediumGrey},f)};e.default=f},1692,[7,962,1693]);

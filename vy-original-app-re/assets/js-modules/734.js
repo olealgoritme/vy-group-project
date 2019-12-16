@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos",width:48,height:48,scales:[1,2,3],hash:"d159001211a8ccfbc09e524047fd607e",name:"ic_ostfold_white",type:"png"})},734,[152]);

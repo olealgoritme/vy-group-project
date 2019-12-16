@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){'use strict';var t,l,u=(t=r(d[0]))&&t.__esModule?t:{default:t};var n='http://localhost:8081/';m.exports=function(){if(void 0===l){var t=u.default.getConstants().scriptURL.match(/^https?:\/\/.*?\//);l=t?t[0]:null}return{url:l||n,bundleLoadedFromServer:null!==l}}},2041,[155]);

@@ -10,6 +10,7 @@ import org.altbeacon.beacon.MonitorNotifier;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
 
+import java.time.Instant;
 import java.util.Collection;
 
 class VYBeaconManager {
@@ -17,15 +18,18 @@ class VYBeaconManager {
     private static final String TAG = "VYBeaconManager";
     private BeaconManager beaconManager;
     private Region region;
-    private boolean hasBoarded = false;
     private VYBoardingListener boardingListener;
     private Context ctx;
+
+    private TripManager tripManager;
 
     VYBeaconManager(Context ctx, BeaconManager beaconManager, Region region, VYBoardingListener boardingListener) {
         this.ctx = ctx;
         this.beaconManager = beaconManager;
         this.region = region;
         this.boardingListener = boardingListener;
+
+        this.tripManager = TripManager.getInstance();
     }
 
     void startRanging() {
@@ -40,37 +44,46 @@ class VYBeaconManager {
                     Log.e(TAG, "Beacon: TX:   " + beacon.getTxPower());
                     Log.e(TAG, "Beacon: RSSI: " + beacon.getRssi());
                     Log.e(TAG, "Beacon: Dist: " + beacon.getDistance());
-                    Log.e(TAG, "Beacon: ID:   " + beacon.getId1());
+                    Log.e(TAG, "Beacon: ID1:   " + beacon.getId1());
+                    Log.e(TAG, "Beacon: ID2:   " + beacon.getId2());
+                    Log.e(TAG, "Beacon: ID3:   " + beacon.getId3());
 
                     // OnBoarding train
-                    if(VYBeacons.ON_BOARDING_BEACON_ID.equals(beacon.getId1())
+                    if(VYBeacons.compareId(VYBeacons.ON_BOARDING_BEACON_ID, beacon.getId1())
                             && beacon.getDistance() < 2
-                            && !VYApp.hasBoarded) {
+                            && !tripManager.getCurrentTrip().isEnded()
+                            && !tripManager.getCurrentTrip().isStarted()) {
 
-                        // Fire off on-boarding detected
+                        // Fire off "on-boarding detected"
                         if(boardingListener != null) boardingListener.onBoardingDetected(beacon);
                         Log.e(TAG, "YOU ARE NOW ON THE TRAIN");
+
+                        // Set business logic properties
+                        tripManager.startTripAt(Instant.now());
+
+                        // Display notification
                         VYNotification.displayOnBoardingNotification(ctx);
                     }
 
                     // OffBoarding train
-                    if(VYBeacons.OFF_BOARDING_BEACON_ID.equals(beacon.getId1())
+                    if(VYBeacons.compareId(VYBeacons.OFF_BOARDING_BEACON_ID, beacon.getId1())
                             && beacon.getDistance() < 2
-                            && VYApp.hasBoarded
-                            && !VYApp.tripEnded) {
+                            && tripManager.getCurrentTrip().isStarted()
+                            && !tripManager.getCurrentTrip().isEnded()) {
 
-                        // Fire off off-boarding detected
+                        // Fire off "off-boarding detected"
                         if(boardingListener != null) boardingListener.offBoardingDetected(beacon);
                         Log.e(TAG, "YOU ARE NOW OFF THE TRAIN");
+
+                        // Set business logic properties
+                        tripManager.endTripAt(Instant.now());
+
+                        // Display notification
                         VYNotification.displayOffBoardingNotification(ctx);
                     }
-
-                    Log.e(TAG, "Beacon: " + beacon.getDistance() + " meters away");
-                    Log.e(TAG, "Beacon: " + beacon.getId1());
                 }
             }
         });
-
 
         try {
             beaconManager.startRangingBeaconsInRegion(region);

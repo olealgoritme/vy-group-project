@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){'use strict';m.exports=function(t,s){if(s=s.split(':')[0],!(t=+t))return!1;switch(s){case'http':case'ws':return 80!==t;case'https':case'wss':return 443!==t;case'ftp':return 21!==t;case'gopher':return 70!==t;case'file':return!1}return 0!==t}},1712,[]);

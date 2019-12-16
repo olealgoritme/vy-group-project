@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/transport-modes/bus-icon",width:36,height:36,scales:[1,2,3],hash:"561f7a505912cb9a4f1208ccc92d9761",name:"mediumGrey",type:"png"})},778,[152]);

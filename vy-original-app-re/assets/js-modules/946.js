@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/favorite",width:12,height:12,scales:[1,2,3],hash:"46603cd5952b4569b5980716c63ca473",name:"addFavoriteFrom",type:"png"})},946,[152]);

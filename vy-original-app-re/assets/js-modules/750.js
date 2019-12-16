@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos/nettbuss",width:81,height:20,scales:[1,2,3],hash:"8cf7a6ebcfc7630b49114a643eb08e51",name:"vy_flybussen",type:"png"})},750,[152]);

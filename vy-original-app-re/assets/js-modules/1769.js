@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){var t;Object.defineProperty(e,"__esModule",{value:!0}),e.seatFrontendBaseUrl=void 0;var _=((t=r(d[0]))&&t.__esModule?t:{default:t}).default.SEAT_FRONTEND_SERVICE_URL;e.seatFrontendBaseUrl=_},1769,[617]);

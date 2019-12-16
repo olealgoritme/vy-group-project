@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/illustration",width:146,height:106,scales:[1,2,3],hash:"f4cd1d1a09e53318d7efc3573fab0a95",name:"differentTravelModailityErrorIllustration",type:"png"})},867,[152]);

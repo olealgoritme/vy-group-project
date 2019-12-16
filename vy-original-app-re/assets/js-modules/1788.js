@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var t=r(d[0]),n=r(d[1]);var o=function(o){var u=o.weekdays,v=o.txtFunction,l=o.printIndividualDays,s=void 0!==l&&l;return(0,t.capitalize)((0,n.getLanguageKeysFromWeekdays)(u,s).map(v).join(', ').toLowerCase())};e.default=o},1788,[671,1789]);

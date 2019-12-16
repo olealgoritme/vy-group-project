@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){var l;Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var u=(0,((l=r(d[0]))&&l.__esModule?l:{default:l}).default)({close:{no:'Lukk',en:'Close'}});e.default=u},1270,[672]);

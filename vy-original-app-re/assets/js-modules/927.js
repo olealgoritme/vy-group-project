@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/general",width:8,height:8,scales:[1,2,3],hash:"386c3a0fc974c85774cb7e7a2c4c3856",name:"crossRed",type:"png"})},927,[152]);

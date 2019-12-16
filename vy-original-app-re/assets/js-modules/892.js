@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/booking",width:24,height:24,scales:[1,2,3],hash:"0ca714de9930616fabed05bfbf236d49",name:"additional-product-unchecked",type:"png"})},892,[152]);

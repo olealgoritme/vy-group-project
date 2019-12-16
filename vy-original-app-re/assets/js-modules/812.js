@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/ticket",width:13,height:67,scales:[1,2,3],hash:"7a07a29fe7a072f5d845e9d47c76a1b4",name:"periodTicketDirectionArrowBlack",type:"png"})},812,[152]);

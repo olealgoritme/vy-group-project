@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos/goahead",width:502,height:153,scales:[1,2,3],hash:"a9cc20c7696625064a33b8ba938d6c15",name:"goahead",type:"png"})},766,[152]);

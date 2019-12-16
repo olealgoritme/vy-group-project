@@ -23,9 +23,6 @@ class VYNotification {
         intentCorrect.putExtra("notiFeedback", "tripEnded");
         PendingIntent pIntentCorrect = PendingIntent.getActivity(ctx, 0, intentCorrect, 0);
 
-        // TODO: set time property in different place plzzZz (decouple from notify)
-        VYApp.vyArrivedTime = Instant.now();
-        VYApp.tripEnded = true;
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(ctx)
                 .setSmallIcon(R.drawable.vy_logo)
@@ -61,9 +58,6 @@ class VYNotification {
         PendingIntent pIntentMoreInfo = PendingIntent.getActivity(ctx, 0, intentMoreInfo, 0);
 
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
-
-        // TODO: move out of notify context
-        VYApp.vyDepartureTime = Instant.now();
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(ctx)
                 .setSmallIcon(R.drawable.vy_logo)

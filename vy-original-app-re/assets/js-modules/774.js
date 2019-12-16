@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/ticket-details",width:18,height:18,scales:[1,2,3],hash:"c6d140cfe8c8a219318101c142f6b696",name:"train",type:"png"})},774,[152]);

@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/arrows",width:16,height:30,scales:[1,2,3],hash:"14d1f9d48c2a8493f61f2bee28112d7a",name:"arrowDown",type:"png"})},914,[152]);

@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/general",width:12,height:11,scales:[1,2,3],hash:"d3676c6d92c728c2923f7d56f6c15ef6",name:"redPlus",type:"png"})},930,[152]);

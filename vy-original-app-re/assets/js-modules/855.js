@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/booking",width:25,height:25,scales:[1,2,3],hash:"6a45d7d0ac5c0943c29c9494ea462c6e",name:"togreise2",type:"png"})},855,[152]);

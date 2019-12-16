@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){var n;Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var u=(0,((n=r(d[0]))&&n.__esModule?n:{default:n}).default)({change_language_header:{no:'Endre spr\xe5k',en:'Change Language'},change_language_to:{no:'Endre til',en:'Change to'}});e.default=u},1837,[672]);

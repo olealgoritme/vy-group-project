@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var t=r(d[0]).StyleSheet.create({container:{backgroundColor:'rgb(255, 255,255)',width:'100%',height:'100%'}});e.default=t},1267,[10]);

@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/transport-modes/airplane-icon",width:30,height:30,scales:[1,2,3],hash:"8a42cf3226f8352c9cd3933920886f92",name:"airplane",type:"png"})},792,[152]);

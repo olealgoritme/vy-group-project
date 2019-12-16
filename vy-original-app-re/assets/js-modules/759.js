@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/payment",width:57,height:36,scales:[1,2,3],hash:"82e446b54119431d7af152fe50a134d2",name:"vipps",type:"png"})},759,[152]);

@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos",width:48,height:48,scales:[1,2,3],hash:"c3b57d7bb354e4ece5681cc4f04f27f4",name:"ic_skyss_grey",type:"png"})},741,[152]);

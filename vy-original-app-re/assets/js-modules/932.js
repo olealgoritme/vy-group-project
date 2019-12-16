@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/general",width:18,height:18,scales:[1,2,3],hash:"af1061f6e9b9fde0338d355b49b44434",name:"minusRed",type:"png"})},932,[152]);

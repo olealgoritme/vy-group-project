@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/tilbud-ombord",width:20,height:20,scales:[1,2,3],hash:"4528fa0c23a040323b8f630ef4567ed4",name:"vendingMachine",type:"png"})},843,[152]);

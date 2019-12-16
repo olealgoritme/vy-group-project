@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){var t=r(d[0]),n=t.getBCHDigit(1335);e.getEncodedBits=function(o,B){for(var c=o.bit<<3|B,f=c<<10;t.getBCHDigit(f)-n>=0;)f^=1335<<t.getBCHDigit(f)-n;return 21522^(c<<10|f)}},1598,[1584]);

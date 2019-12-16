@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/arrows",width:18,height:14,scales:[1,2,3],hash:"ecec324101081c1622e7456b8cad5d6a",name:"left_vyGreen_android",type:"png"})},913,[152]);

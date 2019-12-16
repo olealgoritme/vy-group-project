@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){var o;Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var t=(0,((o=r(d[0]))&&o.__esModule?o:{default:o}).default)({booking:{no:'Reises\xf8k',en:'Search'},tickets:{no:'Billetter',en:'Tickets'},favorites:{no:'Favoritter',en:'Favourites'},profile:{no:'Profil',en:'Profile'}});e.default=t},1918,[672]);

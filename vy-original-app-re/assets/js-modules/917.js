@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/arrows",width:102,height:102,scales:[1],hash:"d10b428e4a305d8d5419d2c49beacb19",name:"Vy_Arrow_left_darkBackground",type:"png"})},917,[152]);

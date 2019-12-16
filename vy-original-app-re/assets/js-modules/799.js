@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/vehicles-icons",width:34,height:20,scales:[1,2,3],hash:"b7fd219ea38ca897b9de6f603c244352",name:"busBlack",type:"png"})},799,[152]);

@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/arrows",width:26,height:26,scales:[1,2,3],hash:"380194bbfe6c2ad015032c5a35312ebc",name:"down_white_ios",type:"png"})},905,[152]);

@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos/nettbuss",width:91,height:20,scales:[1,2,3],hash:"aed8379c2eafbc394e76efaa431bf9c2",name:"fram_ekspress",type:"png"})},752,[152]);

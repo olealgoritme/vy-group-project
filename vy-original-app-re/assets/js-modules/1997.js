@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0});var n=r(d[0]),t=r(d[1]);e.initAndBind=function(u,b){!0===b.debug&&t.logger.enable(),n.getCurrentHub().bindClient(new u(b))}},1997,[1973,1975]);

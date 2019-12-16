@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){'use strict';var t;Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=(0,((t=r(d[0]))&&t.__esModule?t:{default:t}).default)('ModalHostView',{interfaceOnly:!0,paperComponentName:'RCTModalHostView'});e.default=o},278,[160]);

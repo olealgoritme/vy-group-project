@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){var n;Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=(0,((n=r(d[0]))&&n.__esModule?n:{default:n}).default)({no:{no:'norsk bokm\xe5l',en:'Norwegian Bokm\xe5l'},en:{no:'engelsk',en:'English'}});e.default=o},1824,[672]);

@@ -10,9 +10,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.lemon.vy3000.ui.dashboard.DashboardFragment;
-import com.lemon.vy3000.ui.home.SearchFragment;
-import com.lemon.vy3000.ui.notifications.NotificationsFragment;
+import com.lemon.vy3000.ui.ruter.RuterFragment;
+import com.lemon.vy3000.ui.search.SearchFragment;
+import com.lemon.vy3000.ui.tickets.TicketsFragment;
 import com.lemon.vy3000.vy.VYApp;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,9 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
             BottomNavigationView navView = findViewById(R.id.nav_view);
             AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.navigation_search, R.id.navigation_dashboard, R.id.navigation_notifications)
+                    R.id.navigation_search,
+                    R.id.navigation_ruter,
+                    R.id.navigation_tickets,
+                    R.id.navigation_favourites,
+                    R.id.navigation_profile)
                     .build();
-
 
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
             NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -61,24 +64,21 @@ public class MainActivity extends AppCompatActivity {
             switch (feedback) {
 
                 case "tripEnded":
-                    VYApp.tripEnded = true;
                     SearchFragment sFrag = new SearchFragment();
                     fragmentTransaction.replace(android.R.id.content, sFrag);
                     break;
                 case "correct":
-                    VYApp.hasBoarded = true;
                     SearchFragment searchFragment = new SearchFragment();
                     fragmentTransaction.replace(android.R.id.content, searchFragment);
                     break;
 
                 case "addPassengers":
-                    VYApp.hasBoarded = true;
-                    NotificationsFragment notificationFragment = new NotificationsFragment();
+                    TicketsFragment notificationFragment = new TicketsFragment();
                     fragmentTransaction.replace(android.R.id.content, notificationFragment);
 
                     break;
                 case "moreInfo":
-                    DashboardFragment dashboardFragment = new DashboardFragment();
+                    RuterFragment dashboardFragment = new RuterFragment();
                     fragmentTransaction.replace(android.R.id.content, dashboardFragment);
                     break;
             }

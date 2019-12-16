@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/passenger-categories",width:36,height:28,scales:[1,2,3],hash:"97ea9f87ba52ea55f07600c4c038a660",name:"hund_liten",type:"png"})},853,[152]);

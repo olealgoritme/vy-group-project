@@ -7,19 +7,32 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.lemon.vy3000.ui.home.SearchFragment"
+        android:name="com.lemon.vy3000.ui.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.lemon.vy3000.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_ruter"
+        android:name="com.lemon.vy3000.ui.ruter.RuterFragment"
+        android:label="@string/title_ruter"
+        tools:layout="@layout/fragment_ruter" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.lemon.vy3000.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_tickets"
+        android:name="com.lemon.vy3000.ui.tickets.TicketsFragment"
+        android:label="@string/title_tickets"
+        tools:layout="@layout/fragment_tickets" />
+
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="com.lemon.vy3000.ui.favourites.FavouritesFragment"
+        android:label="@string/title_favourites"
+        tools:layout="@layout/fragment_favourites" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.lemon.vy3000.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>

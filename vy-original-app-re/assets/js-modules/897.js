@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/booking",width:20,height:20,scales:[1,2,3],hash:"c095b13b0664de19d5176711a7604b1a",name:"clock",type:"png"})},897,[152]);

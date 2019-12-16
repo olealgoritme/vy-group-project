@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;e.default=function(t){return{active:!0,startTime:'0730',endTime:'0900',stationPairId:t.stationPairId,from:t.from,to:t.to,weekdays:{monday:!0,tuesday:!0,wednesday:!0,thursday:!0,friday:!0,saturday:!1,sunday:!1}}}},1792,[]);

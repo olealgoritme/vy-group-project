@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/ticket",width:65,height:38,scales:[1,2,3],hash:"29453d158d93a5b8aef6a9c2c2fe4d7d",name:"ticket",type:"png"})},824,[152]);

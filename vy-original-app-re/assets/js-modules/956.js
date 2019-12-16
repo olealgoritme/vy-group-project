@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/tab-icons",width:26,height:21,scales:[1,2,3],hash:"3a3a4ebfe994cb6cd64e4b31b00b161f",name:"favoritterGreen",type:"png"})},956,[152]);

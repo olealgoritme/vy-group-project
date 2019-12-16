@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/profile",width:375,height:257,scales:[1,2,3],hash:"b11306ad7a3364c7d4d3a4ce0dfe3c69",name:"vyStripes",type:"png"})},879,[152]);

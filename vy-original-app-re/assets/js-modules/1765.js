@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var t=r(d[0]).StyleSheet.create({calendarItem:{borderRadius:4,alignItems:'center',justifyContent:'center',paddingVertical:6,paddingHorizontal:10,marginTop:4},calendarHeaderContainer:{flexDirection:'row',justifyContent:'space-between',paddingVertical:12}});e.default=t},1765,[10]);

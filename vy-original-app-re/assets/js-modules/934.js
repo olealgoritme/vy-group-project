@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/general",width:49,height:49,scales:[1,2,3],hash:"7b7723d6ec1fbacf6798df57d7e4932f",name:"switch",type:"png"})},934,[152]);

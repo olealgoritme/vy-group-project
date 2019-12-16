@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var t,l=(t=r(d[0]))&&t.__esModule?t:{default:t},u=r(d[1]),s=r(d[2]);var c=function(){return l.default.createElement(u.Image,{source:s.paymentMethods.VIPPS,style:{marginRight:6},accessible:!0,accessibilityLabel:"vipps"})};e.default=c},1730,[7,10,675]);

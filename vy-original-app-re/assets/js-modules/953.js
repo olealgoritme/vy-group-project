@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/tab-icons",width:26,height:20,scales:[1,2,3],hash:"f171cedcc72ea6c4a3b048eb1ab97757",name:"kolumbusBlack",type:"png"})},953,[152]);

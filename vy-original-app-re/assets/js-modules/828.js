@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/inspection",width:29,height:29,scales:[1,2,3],hash:"a0927ce4ac07bdba2961b9794644d350",name:"dyrefri",type:"png"})},828,[152]);

@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/general",width:3,height:17,scales:[1],hash:"1e897da8d40640562e2aa47a44ddad0d",name:"Groupdottes",type:"png"})},960,[152]);

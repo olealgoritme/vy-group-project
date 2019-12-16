@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/logos",width:135,height:40,scales:[1,2,3],hash:"e4c9ac6e159870d15744ba9c99dcc475",name:"googlePlayBadge",type:"png"})},764,[152]);

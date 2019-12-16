@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/app/images/tilbud-ombord",width:20,height:20,scales:[1,2,3],hash:"a291ee7233b5b91e3a7fe2f9b9e618f0",name:"wifi",type:"png"})},837,[152]);

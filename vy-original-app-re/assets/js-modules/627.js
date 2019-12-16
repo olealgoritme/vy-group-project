@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(n){for(var t=arguments.length,u=new Array(t>1?t-1:0),o=1;o<t;o++)u[o-1]=arguments[o];return u.reduce(function(n,t){return n?n[t]:void 0},n)}},627,[]);

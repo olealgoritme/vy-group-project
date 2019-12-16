@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var t=r(d[0]),o=r(d[1]),c=t.StyleSheet.create({icon:{color:o.actionGreen}});e.default=c},1165,[10,415]);

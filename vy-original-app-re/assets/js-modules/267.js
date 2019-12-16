@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){'use strict';Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var n=r(d[0]);var t=function(t){var o={};return t.supportedCommands.forEach(function(t){o[t]=function(o){for(var u=arguments.length,f=new Array(u>1?u-1:0),c=1;c<u;c++)f[c-1]=arguments[c];(0,n.dispatchCommand)(o,t,f)}}),o};e.default=t},267,[64]);
