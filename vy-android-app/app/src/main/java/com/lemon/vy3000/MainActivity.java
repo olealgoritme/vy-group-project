@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
             BottomNavigationView navView = findViewById(R.id.nav_view);
             AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.navigation_search,
                     R.id.navigation_ruter,
                     R.id.navigation_tickets,
                     R.id.navigation_favourites,
@@ -51,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             enableNotifications();
             enablePosition();
         }
+
 
     private void checkForNotificationFeedback() {
         // Launched from Notification intent?
@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
         // Android M Permission check 
         if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("VY needs your position");
-            builder.setMessage("Please enable your position to let us give you a better experience");
+            builder.setTitle("VY trenger posisjonen din");
+            builder.setMessage("Vennligst oppgi din posisjon for bedre brukeropplevelse!");
             builder.setPositiveButton(android.R.string.ok, null);
             builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
