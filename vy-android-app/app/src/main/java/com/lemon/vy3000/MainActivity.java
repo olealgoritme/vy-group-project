@@ -14,6 +14,7 @@ import com.lemon.vy3000.ui.ruter.RuterFragment;
 import com.lemon.vy3000.ui.search.SearchFragment;
 import com.lemon.vy3000.ui.tickets.TicketsFragment;
 import com.lemon.vy3000.vy.VYApp;
+import com.lemon.vy3000.vy.VYNotification;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -31,11 +32,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
 
+            setContentView(R.layout.activity_main);
 
             BottomNavigationView navView = findViewById(R.id.nav_view);
             AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.navigation_search,
                     R.id.navigation_ruter,
                     R.id.navigation_tickets,
                     R.id.navigation_favourites,

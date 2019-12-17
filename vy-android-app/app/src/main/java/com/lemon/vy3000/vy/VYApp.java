@@ -1,6 +1,7 @@
 package com.lemon.vy3000.vy;
 
 import android.app.Application;
+import android.content.Context;
 import android.util.Log;
 import org.altbeacon.beacon.BeaconConsumer;
 import org.altbeacon.beacon.BeaconManager;
@@ -15,10 +16,10 @@ public class VYApp extends Application implements BeaconConsumer {
     private BeaconManager beaconManager;
     private VYBeaconManager vyBeaconManager;
 
-    public static TripManager tripManager;
-
     // to be used later for public APIs
     private VYBoardingListener boardingListener;
+
+    private static Context ctx;
 
 
 
@@ -26,18 +27,22 @@ public class VYApp extends Application implements BeaconConsumer {
     public void onCreate() {
         Log.e(TAG, "Beacon watcher App extensions created");
         super.onCreate();
+        ctx = this;
         beaconManager = BeaconManager.getInstanceForApplication(this);
         beaconManager.getBeaconParsers()
                 .add(new BeaconParser()
                         .setBeaconLayout("m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25"));
         beaconManager.bind(this);
-        tripManager = TripManager.getInstance();
     }
 
     @Override
     public void onBeaconServiceConnect() {
         Region region = new Region("VY_BEACONS", null,null, null);
-        vyBeaconManager = new VYBeaconManager(this,  beaconManager, region, boardingListener);
+        vyBeaconManager = new VYBeaconManager(ctx,  beaconManager, region, boardingListener);
         vyBeaconManager.startRanging();
+   }
+
+   public static Context getContext() {
+        return ctx;
    }
 }

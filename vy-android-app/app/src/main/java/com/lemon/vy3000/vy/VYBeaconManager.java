@@ -48,11 +48,12 @@ class VYBeaconManager {
                     Log.e(TAG, "Beacon: ID1:   " + beacon.getId1());
                     Log.e(TAG, "Beacon: ID2:   " + beacon.getId2());
                     Log.e(TAG, "Beacon: ID3:   " + beacon.getId3());
+                    Log.e(TAG, "Beacon Comp:   " + beacon.getId1() + " : " + VYBeacons.ON_BOARDING_BEACON_ID);
+
 
                     // OnBoarding train
                     if (VYBeacons.compareId(VYBeacons.ON_BOARDING_BEACON_ID, beacon.getId1())
                             && beacon.getDistance() < 2
-                            && !tripManager.getCurrentTrip().isEnded()
                             && !tripManager.getCurrentTrip().isStarted()) {
 
                         // Fire off "on-boarding detected"
@@ -61,6 +62,9 @@ class VYBeaconManager {
 
                         // Set business logic properties
                         tripManager.startTripAt(Instant.now());
+
+
+                        Log.e(TAG, "should display notification!");
 
                         // Display notification
                         VYNotification.displayOnBoardingNotification(ctx);
