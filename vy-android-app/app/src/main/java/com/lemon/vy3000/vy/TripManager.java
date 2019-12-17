@@ -9,7 +9,7 @@ public class TripManager {
     private TripManager() {}
 
     static TripManager getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new TripManager();
             currentTrip = new Trip();
         }
@@ -17,7 +17,7 @@ public class TripManager {
     }
 
     public void startTripAt(Instant departureTime) {
-        if(!currentTrip.isEnded()) new Exception("Can't start a trip because last trip has not ended yet");
+        if (!currentTrip.isEnded()) new Exception("Can't start a trip because last trip has not ended yet");
         currentTrip.setStarted(true);
         currentTrip.setDepartureTime(departureTime);
     }
@@ -27,7 +27,7 @@ public class TripManager {
     }
 
     public void endTripAt(Instant arrivalTime) {
-        if(!currentTrip.isEnded()) new Exception("Can't end a trip that has already ended");
+        if (!currentTrip.isEnded()) new Exception("Can't end a trip that has already ended");
         currentTrip.setEnded(true);
         currentTrip.setArrivalTime(arrivalTime);
     }

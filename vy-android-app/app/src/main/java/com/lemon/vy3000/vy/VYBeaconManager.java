@@ -40,7 +40,7 @@ class VYBeaconManager {
             public void didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region) {
                 Log.e(TAG, "Region called: " + region.getUniqueId());
 
-                for(Beacon beacon : beacons) {
+                for (Beacon beacon : beacons) {
                     Log.e(TAG, "Beacon: BT:   " + beacon.getBluetoothAddress());
                     Log.e(TAG, "Beacon: TX:   " + beacon.getTxPower());
                     Log.e(TAG, "Beacon: RSSI: " + beacon.getRssi());
@@ -50,13 +50,13 @@ class VYBeaconManager {
                     Log.e(TAG, "Beacon: ID3:   " + beacon.getId3());
 
                     // OnBoarding train
-                    if(VYBeacons.compareId(VYBeacons.ON_BOARDING_BEACON_ID, beacon.getId1())
+                    if (VYBeacons.compareId(VYBeacons.ON_BOARDING_BEACON_ID, beacon.getId1())
                             && beacon.getDistance() < 2
                             && !tripManager.getCurrentTrip().isEnded()
                             && !tripManager.getCurrentTrip().isStarted()) {
 
                         // Fire off "on-boarding detected"
-                        if(boardingListener != null) boardingListener.onBoardingDetected(beacon);
+                        if (boardingListener != null) boardingListener.onBoardingDetected(beacon);
                         Log.e(TAG, "YOU ARE NOW ON THE TRAIN");
 
                         // Set business logic properties
@@ -67,7 +67,7 @@ class VYBeaconManager {
                     }
 
                     // OffBoarding train
-                    if(VYBeacons.compareId(VYBeacons.OFF_BOARDING_BEACON_ID, beacon.getId1())
+                    if (VYBeacons.compareId(VYBeacons.OFF_BOARDING_BEACON_ID, beacon.getId1())
                             && beacon.getDistance() < 2
                             && tripManager.getCurrentTrip().isStarted()
                             && !tripManager.getCurrentTrip().isEnded()) {
@@ -78,11 +78,11 @@ class VYBeaconManager {
                         Instant now = Instant.now();
                         Duration between = Duration.between(before, now);
                         long duration = between.getSeconds();
-                        if(duration < 30) return;
+                        if (duration < 30) return;
 
 
                         // Fire off "off-boarding detected"
-                        if(boardingListener != null) boardingListener.offBoardingDetected(beacon);
+                        if (boardingListener != null) boardingListener.offBoardingDetected(beacon);
                         Log.e(TAG, "YOU ARE NOW OFF THE TRAIN");
 
                         // Set business logic properties
