@@ -6,4 +6,6 @@
     <string name="title_favourites">Favoritter</string>
     <string name="title_profile">Profil</string>
     <string name="text_bybil"><u>Lei en bybil</u></string>
+    <string name="text_notify_boarding"><b>Du er ombord på tog R11 på vei til Skien</b></string>
+    <string name="text_notify_offboarding"><b>Avstigning: Tog R11 på Tønsberg</b></string>
 </resources>

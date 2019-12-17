@@ -3,13 +3,13 @@ package com.lemon.vy3000.vy;
 import android.content.Context;
 import android.os.RemoteException;
 import android.util.Log;
-
 import org.altbeacon.beacon.Beacon;
 import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.MonitorNotifier;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Collection;
 
@@ -26,9 +26,10 @@ class VYBeaconManager {
     VYBeaconManager(Context ctx, BeaconManager beaconManager, Region region, VYBoardingListener boardingListener) {
         this.ctx = ctx;
         this.beaconManager = beaconManager;
+        this.beaconManager.setBackgroundScanPeriod(5000l);
+        this.beaconManager.setBackgroundBetweenScanPeriod(30000l);
         this.region = region;
         this.boardingListener = boardingListener;
-
         this.tripManager = TripManager.getInstance();
     }
 
@@ -70,6 +71,15 @@ class VYBeaconManager {
                             && beacon.getDistance() < 2
                             && tripManager.getCurrentTrip().isStarted()
                             && !tripManager.getCurrentTrip().isEnded()) {
+
+
+                        // TODO: This is just a lame test, so we just check if we have been on board for more than 30 seconds
+                        Instant before = tripManager.getCurrentTrip().getDepartureTime();
+                        Instant now = Instant.now();
+                        Duration between = Duration.between(before, now);
+                        long duration = between.getSeconds();
+                        if(duration < 30) return;
+
 
                         // Fire off "off-boarding detected"
                         if(boardingListener != null) boardingListener.offBoardingDetected(beacon);

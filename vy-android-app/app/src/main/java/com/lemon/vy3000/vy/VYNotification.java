@@ -7,10 +7,6 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import com.lemon.vy3000.MainActivity;
 import com.lemon.vy3000.R;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.Date;
-import java.util.Locale;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -27,7 +23,7 @@ class VYNotification {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(ctx)
                 .setSmallIcon(R.drawable.vy_logo)
                 .setContentTitle("Vy")
-                .setContentText("Ticket stopped in Tønsberg (302 kr)")
+                .setContentText("Ticket stopped in Tønsberg (302 kr")
                 .setChannelId("vy")
                 .setOngoing(true)
                 .setAutoCancel(true)
@@ -57,12 +53,12 @@ class VYNotification {
         intentMoreInfo.putExtra("notiFeedback", "moreInfo");
         PendingIntent pIntentMoreInfo = PendingIntent.getActivity(ctx, 0, intentMoreInfo, 0);
 
-        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+        //String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(ctx)
                 .setSmallIcon(R.drawable.vy_logo)
                 .setContentTitle("Vy")
-                .setContentText("Ticket activated @ " + currentTime + " from Oslo")
+                .setContentText(ctx.getResources().getString(R.string.text_notify_boarding))
                 .setChannelId("vy")
                 .setOngoing(true)
                 .setAutoCancel(true)

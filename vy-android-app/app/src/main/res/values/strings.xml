@@ -6,4 +6,7 @@
     <string name="title_favourites">Favourites</string>
     <string name="title_profile">Profile</string>
     <string name="text_bybil"><u>Rent a CityCar</u></string>
+    <string name="text_notify_boarding">You have boarded train R11 going to Skien</string>
+    <string name="text_notify_offboarding">You have left train R11 to Skien</string>
+
 </resources>
