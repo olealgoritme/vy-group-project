@@ -38,11 +38,11 @@ public class SearchFragment extends Fragment {
         int currentHourFormatted = Integer.parseInt(dtf.format(currentHour));
 
         text = "";
-        
+
         if (currentHourFormatted >= 4 && currentHourFormatted < 12) text = "morgen";
         else if (currentHourFormatted >= 12 && currentHourFormatted < 15) text = "dag";
         else if (currentHourFormatted >= 15 && currentHourFormatted < 18) text = "ettermiddag";
-        else if (currentHourFormatted >= 18 && currentHourFormatted < 24) text = "kveld";
+        else if ((currentHourFormatted >= 18 && currentHourFormatted < 24) || currentHourFormatted < 4) text = "kveld";
 
         return "God " + text;
     }
