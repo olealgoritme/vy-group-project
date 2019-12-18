@@ -8,7 +8,7 @@ public class TripManager {
     private static Trip currentTrip;
     private TripManager() {}
 
-    static TripManager getInstance() {
+    public static TripManager getInstance() {
         if (instance == null) {
             instance = new TripManager();
             currentTrip = new Trip();
@@ -24,6 +24,13 @@ public class TripManager {
 
     public Trip getCurrentTrip() {
         return currentTrip;
+    }
+
+    public void resetTrip() {
+        currentTrip.setEnded(false);
+        currentTrip.setStarted(false);
+        currentTrip.setDepartureTime(null);
+        currentTrip.setArrivalTime(null);
     }
 
     public void endTripAt(Instant arrivalTime) {

@@ -9,10 +9,13 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.lemon.vy3000.ui.ruter.RuterFragment;
 import com.lemon.vy3000.ui.search.SearchFragment;
 import com.lemon.vy3000.ui.tickets.TicketsFragment;
+import com.lemon.vy3000.vy.TripManager;
 import com.lemon.vy3000.vy.VYApp;
 import com.lemon.vy3000.vy.VYNotification;
 
@@ -51,12 +54,21 @@ public class MainActivity extends AppCompatActivity {
             checkForNotificationFeedback();
             enableNotifications();
             enablePosition();
+
+            // Reset trip for demonstration purposes, if a trip has already ended
+            if(TripManager.getInstance().getCurrentTrip().isEnded())
+                TripManager.getInstance().resetTrip();
         }
 
+        @Override
+        public void onBackPressed() {
+            super.onBackPressed();
+            VYApp.lookForBeacons();
+        }
 
     private void checkForNotificationFeedback() {
         // Launched from Notification intent?
-        String feedback = getIntent().getStringExtra("notiFeedback");
+        String feedback = getIntent().getStringExtra("onNotificationClick");
 
         // Definitely launched from notify (pending) intent
         if (feedback != null) {
@@ -65,13 +77,15 @@ public class MainActivity extends AppCompatActivity {
 
             switch (feedback) {
 
-                case "tripEnded":
-                    SearchFragment sFrag = new SearchFragment();
-                    fragmentTransaction.replace(android.R.id.content, sFrag);
-                    break;
-                case "correct":
+                case "onClickBoarded":
                     SearchFragment searchFragment = new SearchFragment();
                     fragmentTransaction.replace(android.R.id.content, searchFragment);
+                    break;
+
+                case "onClickOffBoarded":
+                    finish();
+                    Toast.makeText(this, "CALLED OFFBOARDED IN MAIN ACTIVITY", Toast.LENGTH_LONG).show();
+
                     break;
 
                 case "addPassengers":
@@ -85,9 +99,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
-            // Remove notifications
-            NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-            notificationManager.cancelAll();
         }
     }
 

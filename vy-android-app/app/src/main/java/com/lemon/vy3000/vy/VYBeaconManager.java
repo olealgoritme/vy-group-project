@@ -28,9 +28,14 @@ class VYBeaconManager {
         this.beaconManager = beaconManager;
         this.beaconManager.setBackgroundScanPeriod(5000l);
         this.beaconManager.setBackgroundBetweenScanPeriod(30000l);
+        this.beaconManager.applySettings();
         this.region = region;
         this.boardingListener = boardingListener;
         this.tripManager = TripManager.getInstance();
+    }
+
+    boolean rangingStarted() {
+        return (this.beaconManager.getRangingNotifiers().size() > 0);
     }
 
     void startRanging() {
@@ -82,7 +87,7 @@ class VYBeaconManager {
                         Instant now = Instant.now();
                         Duration between = Duration.between(before, now);
                         long duration = between.getSeconds();
-                        if (duration < 30) return;
+                        if (duration < 5) return;
 
 
                         // Fire off "off-boarding detected"

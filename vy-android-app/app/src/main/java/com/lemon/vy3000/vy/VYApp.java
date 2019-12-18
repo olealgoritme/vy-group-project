@@ -14,7 +14,7 @@ public class VYApp extends Application implements BeaconConsumer {
 
     protected static final String TAG = "VYApp";
     private BeaconManager beaconManager;
-    private VYBeaconManager vyBeaconManager;
+    private static VYBeaconManager vyBeaconManager;
 
     // to be used later for public APIs
     private VYBoardingListener boardingListener;
@@ -39,7 +39,14 @@ public class VYApp extends Application implements BeaconConsumer {
     public void onBeaconServiceConnect() {
         Region region = new Region("VY_BEACONS", null,null, null);
         vyBeaconManager = new VYBeaconManager(ctx,  beaconManager, region, boardingListener);
+   }
+
+   public static void lookForBeacons() {
         vyBeaconManager.startRanging();
+   }
+
+   public static void dontLookForBeacons() {
+        vyBeaconManager.stopRanging();
    }
 
    public static Context getContext() {
