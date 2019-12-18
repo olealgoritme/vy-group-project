@@ -58,7 +58,7 @@ class VYBeaconManager {
 
                     // OnBoarding train
                     if (VYBeacons.compareId(VYBeacons.ON_BOARDING_BEACON_ID, beacon.getId1())
-                            && beacon.getDistance() < 2
+                            && beacon.getDistance() < 10
                             && !tripManager.getCurrentTrip().isStarted()) {
 
                         // Fire off "on-boarding detected"
@@ -87,7 +87,7 @@ class VYBeaconManager {
                         Instant now = Instant.now();
                         Duration between = Duration.between(before, now);
                         long duration = between.getSeconds();
-                        if (duration < 5) return;
+                        if (duration < 10) return;
 
 
                         // Fire off "off-boarding detected"
