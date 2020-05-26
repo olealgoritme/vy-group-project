@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lemon.vy3000">
 
-    <dist:module dist:instant="true" />
+    <!-- <dist:module dist:instant="true" /> -->
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".app.VYApp"
@@ -20,6 +20,8 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_vy_logo"
         android:supportsRtl="true">
+
+        <service android:name=".vy.beacon.VYBeaconService"/>
 
         <activity
             android:name=".ui.activity.MainActivity"
@@ -47,8 +49,6 @@
             tools:ignore="LockedOrientationActivity">
         </activity>
 
-        <service android:name=".vy.beacon.VYBeaconService"
-            android:enabled="true"/>
 
     </application>
 

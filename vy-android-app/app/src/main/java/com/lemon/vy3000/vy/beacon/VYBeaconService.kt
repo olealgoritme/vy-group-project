@@ -2,48 +2,35 @@ package com.lemon.vy3000.vy.beacon
 
 import android.app.Service
 import android.content.Intent
+import android.os.Build
 import android.os.IBinder
 import android.util.Log
-import com.lemon.vy3000.vy.notifications.VYNotifications
+import androidx.annotation.RequiresApi
+import com.lemon.vy3000.vy.notifications.VYNotification
 import com.lemon.vy3000.vy.ticket.VYBoardingListener
 import com.lemon.vy3000.vy.ticket.VYTicketManager
-import org.altbeacon.beacon.BeaconConsumer
-import org.altbeacon.beacon.BeaconManager
-import org.altbeacon.beacon.BeaconParser
-import org.altbeacon.beacon.Region
 
-class VYBeaconService : Service(), BeaconConsumer, VYBoardingListener {
+class VYBeaconService : Service(), VYBoardingListener {
 
-    private lateinit var beaconManager: BeaconManager
-    private lateinit var vyBeaconEncounterHandler: VYBeaconEncounterHandler
     private lateinit var vyTicketManager: VYTicketManager
+    private lateinit var vyBeaconConsumer: VYBeaconConsumer
 
     override fun onBind(intent: Intent): IBinder? {
         return null
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        beaconManager = BeaconManager.getInstanceForApplication(this)
-        //beaconManager.beaconParsers.add(BeaconParser().setBeaconLayout(VYBeaconEncounterHandler.BEACON_LAYOUT))
-        beaconManager.bind(this)
-
         vyTicketManager = VYTicketManager.getInstance()!!
+        vyBeaconConsumer = VYBeaconConsumer(this, vyTicketManager)
+        vyBeaconConsumer.start()
 
         Log.e(TAG, "VY Beacon Service initialized")
         return START_STICKY
     }
 
 
-    /** Callback from BeaconConsumer  */
-    override fun onBeaconServiceConnect() {
-        val region = Region("VY_BEACONS", null, null, null)
-        vyBeaconEncounterHandler = VYBeaconEncounterHandler(beaconManager, region, this)
-        vyBeaconEncounterHandler.startRanging()
-        Log.e(TAG, "BeaconConsumer Service initialized")
-    }
-
-
-    /** Callback from VYBeaconManager  */
+    /** Callback from VYBeaconConsumer  */
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBoardingDetected(vyBeaconEncounter: VYBeaconEncounter) {
         Log.e(TAG, "Boarding detected")
 
@@ -60,26 +47,26 @@ class VYBeaconService : Service(), BeaconConsumer, VYBoardingListener {
 
         // attach beacon encounter to ticket
         vyTicketManager.getCurrentTrip()
-                .beaconEncounter = vyBeaconEncounter
+                .boardingEncounter = vyBeaconEncounter
 
         // show notification
-        VYNotifications.showBoarding(this, vyTicketManager.getCurrentTrip())
+        VYNotification.showBoardingNotification(this, vyTicketManager.getCurrentTrip())
     }
 
 
     /** Callback from VYBeaconManager  */
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onDisembarkingDetected(vyBeaconEncounter: VYBeaconEncounter) {
+        vyTicketManager.getCurrentTrip().disembarkingEncounter = vyBeaconEncounter
+        vyTicketManager.getCurrentTrip().stop(492949842)
+        VYNotification.showDisembarkingNotification(this, vyTicketManager.getCurrentTrip())
         Log.e(TAG, "Disembarking detected")
-        //VYNotification.displayOnDisembarkingNotification();
-        //Notifier.showBoarding(this);
-        // TODO: API call -> get ticket price + timestamp
-        //ticketManager.getCurrentTrip().stopWithTimeStamp();
+        // TODO: API call /api/disembarking -> get ticket price + timestamp -> update vyTicketManager.getCurrentTrip()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if(vyBeaconEncounterHandler.isRanging())
-            vyBeaconEncounterHandler.stopRanging()
+        vyBeaconConsumer.stopRanging()
     }
 
     companion object {

@@ -4,13 +4,20 @@ import android.app.Application
 import android.content.Context
 
 class VYApp : Application() {
-    override fun onCreate() {
-        super.onCreate()
-        context = this
+
+    init {
+        instance = this
     }
 
     companion object {
-        var context: Context? = null
-            private set
+        private var instance: VYApp? = null
+
+        fun context() : Context {
+            return instance!!.applicationContext
+        }
     }
-}
+
+    override fun onCreate() {
+        super.onCreate()
+        val instance: Context = context()
+    }}

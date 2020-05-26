@@ -8,7 +8,8 @@ object VYBeaconRepository {
     val DISEMBARKING_BEACON_ID: Identifier = Identifier.fromUuid(UUID.fromString("00112233-4455-6677-8899-aabbccddeeff"))
     val BOARDING_BEACON_ID: Identifier = Identifier.fromUuid(UUID.fromString("00112233-4455-6677-8899-aeaeaeaeaeae"))
 
-    fun compareId(id1: Identifier, id2: Identifier): Boolean {
+    fun compareTo(id1: Identifier, id2: Identifier): Boolean {
         return id1 == id2
     }
+
 }

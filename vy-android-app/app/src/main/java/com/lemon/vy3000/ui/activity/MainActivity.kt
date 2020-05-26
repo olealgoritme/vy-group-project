@@ -14,6 +14,13 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import com.karumi.dexter.listener.multi.SnackbarOnAnyDeniedMultiplePermissionsListener
 import com.lemon.vy3000.R
 import com.lemon.vy3000.ui.fragments.ruter.RuterFragment
 import com.lemon.vy3000.ui.fragments.search.SearchFragment
@@ -21,6 +28,7 @@ import com.lemon.vy3000.ui.fragments.tickets.TicketsFragment
 import com.lemon.vy3000.vy.beacon.VYBeaconService
 import com.lemon.vy3000.vy.notifications.VYNotification.enableNotifications
 import com.lemon.vy3000.vy.ticket.VYTicketManager
+
 
 @RequiresApi(api = Build.VERSION_CODES.Q)
 class MainActivity : AppCompatActivity() {
@@ -43,15 +51,9 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         NavigationUI.setupWithNavController(navView, navController)
 
-        requestPermission()
         enableNotifications()
         checkForNotificationIntent()
-
-        vyTicketManager = VYTicketManager.getInstance()!!
-
-        // Reset trip for demonstration purposes, if a trip has already ended
-        if (vyTicketManager.getCurrentTrip().hasEnded())
-            vyTicketManager.getCurrentTrip().resetTicket()
+        requestPermission()
 
         // Test REST API Call
         //val api = VYAPIController()
@@ -60,7 +62,8 @@ class MainActivity : AppCompatActivity() {
         startService(Intent(this, VYBeaconService::class.java))
     }
 
-    private fun checkForNotificationIntent() {
+
+private fun checkForNotificationIntent() {
         val feedback = intent.getStringExtra("onNotificationClick")
 
         // Definitely launched from notify (pending) intent
@@ -88,20 +91,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestPermission() {
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            if (checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED) {
-                if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("VY trenger posisjonen din")
-                    builder.setMessage("Vennligst oppgi din posisjon for bedre brukeropplevelse!")
-                    builder.setPositiveButton(android.R.string.ok, null)
-                    builder.setOnDismissListener {
-                        requestPermissions(arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION),
-                                PERMISSION_REQUEST_BACKGROUND_LOCATION)
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+                if (checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("VY trenger posisjonen din")
+                        builder.setMessage("Vennligst oppgi din posisjon for bedre brukeropplevelse!")
+                        builder.setPositiveButton(android.R.string.ok, null)
+                        builder.setOnDismissListener {
+                            requestPermissions(arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION),
+                                    PERMISSION_REQUEST_BACKGROUND_LOCATION)
+                        }
+                        builder.show()
+                    } else {
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Begrenset funksjonalitet")
+                        builder.setMessage("Uten tilgang til Bluetooth vil ikke appen kunne spore beacons i bakgrunnen.")
+                        builder.setPositiveButton(android.R.string.ok, null)
+                        builder.setOnDismissListener { }
+                        builder.show()
                     }
-                    builder.show()
+                }
+            } else {
+                if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_BACKGROUND_LOCATION),
+                            PERMISSION_REQUEST_FINE_LOCATION)
                 } else {
                     val builder = AlertDialog.Builder(this)
                     builder.setTitle("Begrenset funksjonalitet")
@@ -110,20 +127,6 @@ class MainActivity : AppCompatActivity() {
                     builder.setOnDismissListener { }
                     builder.show()
                 }
-            }
-        } else {
-            if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_BACKGROUND_LOCATION),
-                        PERMISSION_REQUEST_FINE_LOCATION)
-            } else {
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("Begrenset funksjonalitet")
-                builder.setMessage("Uten tilgang til Bluetooth vil ikke appen kunne spore beacons i bakgrunnen.")
-                builder.setPositiveButton(android.R.string.ok, null)
-                builder.setOnDismissListener { }
-                builder.show()
-            }
         }
     }
 
