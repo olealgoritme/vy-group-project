@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lemon.vy3000">
 
     <dist:module dist:instant="true" />
@@ -13,7 +14,7 @@
 
 
     <application
-        android:name=".vy.VYApp"
+        android:name=".app.VYApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_vy_logo"
         android:label="@string/app_name"
@@ -21,14 +22,14 @@
         android:supportsRtl="true">
 
         <activity
-            android:name=".MainActivity"
-            android:launchMode="singleTask"
-            android:taskAffinity=""
+            android:name=".ui.activity.MainActivity"
+            android:launchMode="singleInstance"
             android:excludeFromRecents="true"
             android:configChanges="orientation"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -36,14 +37,18 @@
         </activity>
 
         <activity
-            android:name=".AutoTicketActivity"
+            android:name=".ui.activity.AutoTicketActivity"
             android:launchMode="singleTask"
             android:taskAffinity=""
             android:excludeFromRecents="true"
             android:configChanges="orientation"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
         </activity>
+
+        <service android:name=".vy.beacon.VYBeaconService"
+            android:enabled="true"/>
 
     </application>
 

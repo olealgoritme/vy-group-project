@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Vy.iml" filepath="$PROJECT_DIR$/Vy.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Vy/app" />
+      <module fileurl="file://$PROJECT_DIR$/vy-android-app-Vy.iml" filepath="$PROJECT_DIR$/vy-android-app-Vy.iml" group="Vy" />
     </modules>
   </component>
 </project>
