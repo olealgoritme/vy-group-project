@@ -1,4 +1,4 @@
-package com.lemon.vy3000.ui.fragments.favourites
+package com.lemon.vy3000.ui.fragment.favourites
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -2,6 +2,7 @@ package com.lemon.vy3000.vy.api
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import org.altbeacon.beacon.Identifier
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -17,23 +18,33 @@ class VYAPIController {
         .build()
     }
 
-    fun getBeaconList() {
-        val vyBackendAPI = retrofit.create(VYBackendAPI::class.java)
-        val call = vyBackendAPI.vYBeaconList
-        call.enqueue(VYBeaconListResponseHandler())
+    fun updateBeaconRepository() {
+        val vyBackendAPI = retrofit.create(VYAPIInterface::class.java)
+        val call = vyBackendAPI.updateBeaconRepository()
+
+        val responder = VYAPIResponseBeaconsList()
+        call.enqueue(responder)
     }
 
-    fun postAPIBoarding(email: String) {
-        val vyBackendAPI = retrofit.create(VYBackendAPI::class.java)
-        val call = vyBackendAPI.postBoarding(VYBackendAPI.BoardingData(email))
-        call.enqueue(VYBoardingResponseHandler())
+    fun postAPIBoarding(email: String, beaconUUID: Identifier, listener: VYAPIResponseBoarding.OnAPIResponseBoarding) {
+        val vyBackendAPI = retrofit.create(VYAPIInterface::class.java)
+        val call = vyBackendAPI.postBoarding(VYAPIInterface.BoardingData(email, beaconUUID))
+
+        val responder = VYAPIResponseBoarding()
+        responder.withListener(listener)
+        call.enqueue(responder)
     }
 
-    fun postAPIDisembarking(ticketId: String) {
-        val vyBackendAPI = retrofit.create(VYBackendAPI::class.java)
-        val call = vyBackendAPI.postDisembarking(VYBackendAPI.DisembarkingData(ticketId))
-        //call.enqueue(VYDisembarkingResponseHandler())
+    fun postAPIDisembarking(ticketId: String, listener: OnAPIResponseDisembarking) {
+        val vyBackendAPI = retrofit.create(VYAPIInterface::class.java)
+        val call = vyBackendAPI.postDisembarking(VYAPIInterface.StationData(ticketId))
+
+        val responder = VYAPIResponseDisembarking()
+        responder.withListener(listener)
+        call.enqueue(responder)
     }
+
+
 
 
     companion object {

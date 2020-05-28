@@ -25,7 +25,7 @@ class VYNotifications {
         }
 
         @JvmStatic
-        fun showDisembarking(ctx: Context, vyTicket: VYTicket, ticketPrice: Int) {
+        fun showStation(ctx: Context, vyTicket: VYTicket, ticketPrice: Int) {
             Notify
                 .with(ctx)
                 .header {

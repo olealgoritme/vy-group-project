@@ -1,4 +1,4 @@
-package com.lemon.vy3000.vy.api
+package com.lemon.vy3000.vy.beacon
 
 // list of different beacon protocol layouts
 class VYBeaconLayout {

@@ -6,7 +6,6 @@ import android.content.ServiceConnection
 import android.os.RemoteException
 import android.util.Log
 import com.lemon.vy3000.app.VYApp
-import com.lemon.vy3000.vy.api.VYBeaconLayout
 import com.lemon.vy3000.vy.ticket.VYBoardingListener
 import com.lemon.vy3000.vy.ticket.VYTicketManager
 import org.altbeacon.beacon.*
@@ -40,18 +39,13 @@ class VYBeaconConsumer(private val boardingListener: VYBoardingListener, private
 
                 // Boarding detection
                 if (hasFoundBoardingBeacon(beacon) && satisfyConditions()) {
-                    val vyBeaconEncounter = VYBeaconEncounter()
-                    vyBeaconEncounter.bluetoothAddress = beacon.bluetoothAddress
-                    vyBeaconEncounter.distance = beacon.distance
-                    vyBeaconEncounter.rssi = beacon.rssi
-                    vyBeaconEncounter.txPower = beacon.txPower
-
+                    val vyBeaconEncounter = VYBeaconEncounter.getData(beacon)
                     boardingListener.onBoardingDetected(vyBeaconEncounter)
                 }
 
                 // Disembarking detection
-                if (hasFoundDisembarkingBeacon(beacon) && satisfyConditions()) {
-                    val vyBeaconEncounter = VYBeaconEncounter()
+                if (hasFoundStationBeacon(beacon) && satisfyConditions()) {
+                    val vyBeaconEncounter = VYBeaconEncounter.getData(beacon)
                     boardingListener.onDisembarkingDetected(vyBeaconEncounter)
                 }
             }
@@ -71,14 +65,20 @@ class VYBeaconConsumer(private val boardingListener: VYBoardingListener, private
     }
 
     // DEFINITION OF BOARDING DETECTED
-    // Detect 2 interval detections
-    // TxPower: -77
     private fun hasFoundBoardingBeacon(beacon: Beacon): Boolean {
         return VYBeaconRepository.compareTo(VYBeaconRepository.BOARDING_BEACON_ID, beacon.id1)
                 && beacon.distance < 3
                 && !vyTicketManager.getCurrentTrip().hasStarted()
     }
 
+    // DEFINITION OF DISEMBARKING DETECTED
+    private fun hasFoundStationBeacon(beacon: Beacon): Boolean {
+        return VYBeaconRepository.compareTo(VYBeaconRepository.STATION_BEACON_ID, beacon.id1)
+                && vyTicketManager.getCurrentTrip().hasStarted()
+    }
+
+    // Detect min 2 interval detections
+    // TxPower: -77
     private fun satisfyConditions(): Boolean {
         if(this.intervalDetectionCount >= 2) {
             this.intervalDetectionCount = 0
@@ -87,17 +87,9 @@ class VYBeaconConsumer(private val boardingListener: VYBoardingListener, private
             intervalDetectionCount++
             return false
         }
-
         return false
     }
 
-    // DEFINITION OF DISEMBARKING DETECTED
-    // Detect 2 interval detections
-    // TxPower: -77
-    private fun hasFoundDisembarkingBeacon(beacon: Beacon): Boolean {
-        return VYBeaconRepository.compareTo(VYBeaconRepository.DISEMBARKING_BEACON_ID,beacon.id1)
-                && vyTicketManager.getCurrentTrip().hasStarted()
-    }
 
     override fun getApplicationContext(): Context {
         return VYApp.context()

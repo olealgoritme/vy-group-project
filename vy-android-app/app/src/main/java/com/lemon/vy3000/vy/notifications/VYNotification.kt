@@ -42,7 +42,7 @@ object VYNotification {
     }
 
     @JvmStatic
-    fun showDisembarkingNotification(ctx: Context, vyTicket: VYTicket) {
+    fun showStationNotification(ctx: Context, vyTicket: VYTicket) {
         val disembark = Intent(ctx, MainActivity::class.java)
         disembark.putExtra("onNotificationClick", "onClickDisembark")
 

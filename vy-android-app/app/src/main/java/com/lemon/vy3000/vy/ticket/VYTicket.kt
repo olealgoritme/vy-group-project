@@ -1,14 +1,15 @@
 package com.lemon.vy3000.vy.ticket
 
 import com.lemon.vy3000.vy.beacon.VYBeaconEncounter
+import java.util.*
 
 class VYTicket {
     var ticketId: String? = null
     var trainDestination: String? = null
-    var arrivalTime: Long? = null
+    var arrivalTime: Date? = null
     var departureTime: Long? = null
     var boardingEncounter: VYBeaconEncounter? = null
-    var disembarkingEncounter: VYBeaconEncounter? = null
+    var stationEncounter: VYBeaconEncounter? = null
     var ticketPrice: Double? = null
     var started: Boolean = false
 
@@ -27,7 +28,7 @@ class VYTicket {
         this.started = true
     }
 
-    fun stop(arrivalTime: Long) {
+    fun stop(arrivalTime: Date) {
         this.arrivalTime = arrivalTime
         this.started = false
     }
@@ -37,7 +38,7 @@ class VYTicket {
         this.arrivalTime = null
         this.trainDestination = null
         this.boardingEncounter = null
-        this.disembarkingEncounter = null
+        this.stationEncounter = null
         this.ticketPrice = 0.0;
     }
 

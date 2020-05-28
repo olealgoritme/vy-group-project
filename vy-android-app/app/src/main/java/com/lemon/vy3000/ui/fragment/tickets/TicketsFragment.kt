@@ -1,4 +1,4 @@
-package com.lemon.vy3000.ui.fragments.tickets
+package com.lemon.vy3000.ui.fragment.tickets
 
 import android.os.Bundle
 import android.view.LayoutInflater

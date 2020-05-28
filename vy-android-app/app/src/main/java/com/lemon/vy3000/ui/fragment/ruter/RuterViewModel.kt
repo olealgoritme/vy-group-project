@@ -1,15 +1,15 @@
-package com.lemon.vy3000.ui.fragments.tickets
+package com.lemon.vy3000.ui.fragment.ruter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class TicketsViewModel : ViewModel() {
+class RuterViewModel : ViewModel() {
     private val mText: MutableLiveData<String> = MutableLiveData()
     val text: LiveData<String>
         get() = mText
 
     init {
-        mText.value = "This is notifications fragment"
+        mText.value = "This is ruter fragment"
     }
 }

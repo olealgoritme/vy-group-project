@@ -14,26 +14,17 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.MultiplePermissionsReport
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import com.karumi.dexter.listener.multi.SnackbarOnAnyDeniedMultiplePermissionsListener
 import com.lemon.vy3000.R
-import com.lemon.vy3000.ui.fragments.ruter.RuterFragment
-import com.lemon.vy3000.ui.fragments.search.SearchFragment
-import com.lemon.vy3000.ui.fragments.tickets.TicketsFragment
+import com.lemon.vy3000.app.VYApp
+import com.lemon.vy3000.ui.fragment.ruter.RuterFragment
+import com.lemon.vy3000.ui.fragment.search.SearchFragment
+import com.lemon.vy3000.ui.fragment.tickets.TicketsFragment
 import com.lemon.vy3000.vy.beacon.VYBeaconService
 import com.lemon.vy3000.vy.notifications.VYNotification.enableNotifications
-import com.lemon.vy3000.vy.ticket.VYTicketManager
 
 
 @RequiresApi(api = Build.VERSION_CODES.Q)
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var vyTicketManager: VYTicketManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,15 +46,14 @@ class MainActivity : AppCompatActivity() {
         checkForNotificationIntent()
         requestPermission()
 
-        // Test REST API Call
-        //val api = VYAPIController()
-        //api.getBeaconList()
+        // Update local repository of all beacons
+        val api = VYApp.getAPI()
+        api.updateBeaconRepository()
 
         startService(Intent(this, VYBeaconService::class.java))
     }
 
-
-private fun checkForNotificationIntent() {
+    private fun checkForNotificationIntent() {
         val feedback = intent.getStringExtra("onNotificationClick")
 
         // Definitely launched from notify (pending) intent
@@ -166,4 +156,6 @@ private fun checkForNotificationIntent() {
         private const val PERMISSION_REQUEST_BACKGROUND_LOCATION = 2
         private const val TAG = "MainActivity"
     }
+
+
 }

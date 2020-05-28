@@ -1,4 +1,4 @@
-package com.lemon.vy3000.ui.fragments.ruter
+package com.lemon.vy3000.ui.fragment.ruter
 
 import android.os.Bundle
 import android.view.LayoutInflater

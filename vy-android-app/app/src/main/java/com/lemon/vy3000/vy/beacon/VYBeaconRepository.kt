@@ -5,8 +5,8 @@ import java.util.*
 
 object VYBeaconRepository {
 
-    val DISEMBARKING_BEACON_ID: Identifier = Identifier.fromUuid(UUID.fromString("00112233-4455-6677-8899-aabbccddeeff"))
-    val BOARDING_BEACON_ID: Identifier = Identifier.fromUuid(UUID.fromString("00112233-4455-6677-8899-aeaeaeaeaeae"))
+    var BOARDING_BEACON_ID: Identifier = Identifier.fromUuid(UUID.fromString("00000001-1337-1337-1337-beefc0debeef"))
+    var STATION_BEACON_ID:  Identifier = Identifier.fromUuid(UUID.fromString("00000000-1337-1337-1337-beefc0debeef"))
 
     fun compareTo(id1: Identifier, id2: Identifier): Boolean {
         return id1 == id2

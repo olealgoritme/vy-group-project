@@ -1,4 +1,4 @@
-package com.lemon.vy3000.ui.fragments.profile
+package com.lemon.vy3000.ui.fragment.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

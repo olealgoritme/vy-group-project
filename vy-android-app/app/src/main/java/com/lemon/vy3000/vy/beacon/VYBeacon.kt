@@ -1,21 +1,29 @@
 package com.lemon.vy3000.vy.beacon
 
+import com.google.gson.annotations.SerializedName
+import org.altbeacon.beacon.Identifier
+
 class VYBeacon {
+
     // BLE Service UUID (id1)
-    var uuid: String? = null
+    @SerializedName("uuid") var uuid: String? = null
 
-    // defines latitude coordinates of the mounted beacon
-    var latitude: String? = null
+    // specific train number
+    @SerializedName("trainNumber") var trainNumber: Int? = null
 
-    // defines longitude coordinates of the mounted beacon
-    var longitude: String? = null
+    // specific train carriage number
+    @SerializedName("trainCarriageNumber") var trainCarriageNumber: Int? = null
 
-    // defines specific train number
-    var trainNumber: String? = null
+    // type of beacon
+    @SerializedName("type")  var type: String? = null
 
-    // defines specific train carriage number
-    var trainCarriageNumber: String? = null
+    // station
+    @SerializedName("station") var station: String? = null
 
-    // defines string representation of the complete beacon (simple concat)
-    var name: String = "$uuid-$latitude-$longitude-$trainNumber-$trainCarriageNumber"
+    // latitude
+    @SerializedName("_latitude") var latitude: Double? = null
+
+    // longitude
+    @SerializedName("_longitude") var longitude: Double? = null
+
 }
