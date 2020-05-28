@@ -18,8 +18,8 @@ import java.util.*
 @RequiresApi(Build.VERSION_CODES.O)
 class VYBeaconService : Service(), VYBoardingListener, VYAPIResponseBoarding.OnAPIResponseBoarding, OnAPIResponseDisembarking {
 
-    private lateinit var vyTicketManager: VYTicketManager
-    private lateinit var vyBeaconConsumer: VYBeaconConsumer
+    private var vyTicketManager: VYTicketManager? = null
+    private var vyBeaconConsumer: VYBeaconConsumer? = null
 
     override fun onBind(intent: Intent): IBinder? {
         return null
@@ -31,8 +31,8 @@ class VYBeaconService : Service(), VYBoardingListener, VYAPIResponseBoarding.OnA
         vyTicketManager = VYTicketManager.getInstance()!!
 
         // Library Beacon Consumer
-        vyBeaconConsumer = VYBeaconConsumer(this, vyTicketManager)
-        vyBeaconConsumer.start()
+        vyBeaconConsumer = VYBeaconConsumer(this, vyTicketManager!!)
+        vyBeaconConsumer!!.start()
 
 
         // Update local repository of all beacons
@@ -50,10 +50,10 @@ class VYBeaconService : Service(), VYBoardingListener, VYAPIResponseBoarding.OnA
         Log.e(TAG, "Boarding detected")
 
         // Reset ticket
-        vyTicketManager.getCurrentTrip().resetTicket()
+        vyTicketManager!!.getCurrentTrip().resetTicket()
 
         // Attach boarding encounter to ticket
-        vyTicketManager.getCurrentTrip().boardingEncounter = vyBeaconEncounter
+        vyTicketManager!!.getCurrentTrip().boardingEncounter = vyBeaconEncounter
 
 
         // API CALL -> /api/boarding - body params (JSON): email, beacon_uuid
@@ -63,10 +63,10 @@ class VYBeaconService : Service(), VYBoardingListener, VYAPIResponseBoarding.OnA
     }
 
     override fun onAPIBoardingSuccess(ticketId: String, trainDestination: String, departureTime: Long) {
-        vyTicketManager.getCurrentTrip().start(ticketId, departureTime, trainDestination)
+        vyTicketManager!!.getCurrentTrip().start(ticketId, departureTime, trainDestination)
 
         // show notification
-        VYNotification.showBoardingNotification(this, vyTicketManager.getCurrentTrip())
+        VYNotification.showBoardingNotification(this, vyTicketManager!!.getCurrentTrip())
     }
 
 
@@ -75,10 +75,10 @@ class VYBeaconService : Service(), VYBoardingListener, VYAPIResponseBoarding.OnA
     override fun onDisembarkingDetected(vyBeaconEncounter: VYBeaconEncounter?) {
         Log.e(TAG, "Station detected")
 
-        vyTicketManager.getCurrentTrip().stationEncounter = vyBeaconEncounter
-        vyTicketManager.getCurrentTrip().stop(Calendar.getInstance().time)
+        vyTicketManager!!.getCurrentTrip().stationEncounter = vyBeaconEncounter
+        vyTicketManager!!.getCurrentTrip().stop(Calendar.getInstance().time)
 
-        VYNotification.showStationNotification(this, vyTicketManager.getCurrentTrip())
+        VYNotification.showStationNotification(this, vyTicketManager!!.getCurrentTrip())
         // TODO: API call /api/station -> get ticket price + timestamp -> update vyTicketManager.getCurrentTrip()
     }
 
@@ -88,7 +88,7 @@ class VYBeaconService : Service(), VYBoardingListener, VYAPIResponseBoarding.OnA
 
     override fun onDestroy() {
         super.onDestroy()
-        vyBeaconConsumer.stopRanging()
+        vyBeaconConsumer!!.stopRanging()
     }
 
     companion object {

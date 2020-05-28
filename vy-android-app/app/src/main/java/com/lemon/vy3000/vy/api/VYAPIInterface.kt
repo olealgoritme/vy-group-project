@@ -2,6 +2,7 @@ package com.lemon.vy3000.vy.api
 
 import com.google.gson.annotations.SerializedName
 import com.lemon.vy3000.vy.beacon.VYBeacon
+import com.lemon.vy3000.vy.ticket.VYTicket
 import org.altbeacon.beacon.Identifier
 import org.json.JSONObject
 import retrofit2.Call
@@ -30,7 +31,7 @@ interface VYAPIInterface {
     // returns ticketId(String), trainDestination, departureTime(long)
     @Headers("Content-Type: application/json")
     @POST("/api/boarding")
-    fun postBoarding(@Body boardingData: BoardingData): Call<JSONObject>
+    fun postBoarding(@Body boardingData: BoardingData): Call<VYTicket>
 
     // TODO: database needs to implement table to catch our VYBeaconEncounter data (rssi, txPower, bt_address etc) - only sending uuid is not enough
     data class BoardingData(

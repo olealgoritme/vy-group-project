@@ -1,13 +1,15 @@
 package com.lemon.vy3000.vy.ticket
 
+import com.google.gson.annotations.SerializedName
 import com.lemon.vy3000.vy.beacon.VYBeaconEncounter
 import java.util.*
 
 class VYTicket {
-    var ticketId: String? = null
+
+    @SerializedName("ticketId") var ticketId: String? = null
     var trainDestination: String? = null
     var arrivalTime: Date? = null
-    var departureTime: Long? = null
+    @SerializedName("departureTime") var departureTime: Long? = null
     var boardingEncounter: VYBeaconEncounter? = null
     var stationEncounter: VYBeaconEncounter? = null
     var ticketPrice: Double? = null

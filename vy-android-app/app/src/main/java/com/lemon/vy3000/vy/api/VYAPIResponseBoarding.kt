@@ -1,15 +1,17 @@
 package com.lemon.vy3000.vy.api
 
 import android.util.Log
+import com.lemon.vy3000.vy.ticket.VYTicket
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class VYAPIResponseBoarding: Callback<JSONObject> {
+class VYAPIResponseBoarding: Callback<VYTicket> {
 
     private lateinit var listener: OnAPIResponseBoarding
-companion object {
+
+    companion object {
         private val TAG: String = javaClass::class.java.simpleName
     }
 
@@ -17,23 +19,25 @@ companion object {
         this.listener = listener
     }
 
-    override fun onResponse(call: Call<JSONObject>, response: Response<JSONObject>) {
+    override fun onResponse(call: Call<VYTicket>, response: Response<VYTicket>) {
         if (response.isSuccessful) {
-            val json = response.body()
-            Log.e(TAG, "Got /api/boarding response: $json");
+            val ticketInfo = response.body()
+            Log.e(TAG, "Got /api/boarding response: $ticketInfo");
 
-            val ticketId = json?.get("ticketId") as String
-            val trainDestination = json.get("ticketId") as String
-            val departureTime = json.get("departureTime") as Long
+            val ticketId = ticketInfo!!.ticketId
+            val trainDestination = ticketInfo.trainDestination
+            val departureTime = ticketInfo.departureTime
 
-            this.listener.onAPIBoardingSuccess(ticketId, trainDestination, departureTime)
+            if (ticketId != null && trainDestination != null && departureTime != null) {
+                this.listener.onAPIBoardingSuccess(ticketId, trainDestination, departureTime)
+            }
 
         } else {
             Log.e(TAG, "err:" + response.body().toString());
         }
     }
 
-    override fun onFailure(call: Call<JSONObject>, t: Throwable) {
+    override fun onFailure(call: Call<VYTicket>, t: Throwable) {
         t.printStackTrace()
     }
 
@@ -41,3 +45,4 @@ companion object {
         fun onAPIBoardingSuccess(ticketId: String, trainDestination: String, departureTime: Long)
     }
 }
+
