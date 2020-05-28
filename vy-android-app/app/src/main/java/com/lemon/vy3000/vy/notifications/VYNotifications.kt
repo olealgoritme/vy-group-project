@@ -25,7 +25,7 @@ class VYNotifications {
         }
 
         @JvmStatic
-        fun showStation(ctx: Context, vyTicket: VYTicket, ticketPrice: Int) {
+        fun showStation(ctx: Context, vyTicket: VYTicket, price: Int) {
             Notify
                 .with(ctx)
                 .header {
@@ -33,8 +33,8 @@ class VYNotifications {
                 }
                 .asBigText {
                     title = "Avstigning: Tog $vyTicket.trainNumber, vogn $vyTicket.trainCarriageNumber til $vyTicket.trainDestination"
-                    text = "Billett avsluttet! Betalt: $ticketPrice kr"
-                    expandedText = "Billett avsluttet! Betalt: $ticketPrice kr"
+                    text = "Billett avsluttet! Betalt: $price kr"
+                    expandedText = "Billett avsluttet! Betalt: $price kr"
                     bigText = "Avstigning: Tog $vyTicket.trainNumber, vogn $vyTicket.trainCarriageNumber til $vyTicket.trainDestination"
                 }
                 .show()

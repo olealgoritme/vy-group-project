@@ -42,14 +42,14 @@ object VYNotification {
     }
 
     @JvmStatic
-    fun showStationNotification(ctx: Context, vyTicket: VYTicket) {
+    fun showDisembarkingNotification(ctx: Context, vyTicket: VYTicket) {
         val disembark = Intent(ctx, MainActivity::class.java)
         disembark.putExtra("onNotificationClick", "onClickDisembark")
 
         val pBoarded = PendingIntent.getActivity(ctx, 0, disembark, 0)
         val inboxStyle = NotificationCompat.InboxStyle()
-        inboxStyle.setBigContentTitle(Html.fromHtml("<b>Avstigning: Tønsberg stasjon - R11 til " + vyTicket.trainDestination  + "</b>"))
-        inboxStyle.addLine(Html.fromHtml("Billett avsluttet<br>Betalt: 258,-"))
+        inboxStyle.setBigContentTitle(Html.fromHtml("<b>Avstigning: " + vyTicket.disembarkingEncounter!!.vyBeacon!!.station + " stasjon - R11 til " + vyTicket.trainDestination  + "</b>"))
+        inboxStyle.addLine(Html.fromHtml("Billett avsluttet<br>Betalt: "+ vyTicket.price + ",-"))
 
         val builder = NotificationCompat.Builder(ctx, "vy")
                 .setStyle(inboxStyle)

@@ -8,15 +8,18 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import com.lemon.vy3000.app.VYApp
 import com.lemon.vy3000.vy.api.OnAPIResponseDisembarking
+import com.lemon.vy3000.vy.api.VYAPIResponseBeaconsList
 import com.lemon.vy3000.vy.api.VYAPIResponseBoarding
 import com.lemon.vy3000.vy.api.VYUserDetails
 import com.lemon.vy3000.vy.notifications.VYNotification
 import com.lemon.vy3000.vy.ticket.VYBoardingListener
 import com.lemon.vy3000.vy.ticket.VYTicketManager
-import java.util.*
 
 @RequiresApi(Build.VERSION_CODES.O)
-class VYBeaconService : Service(), VYBoardingListener, VYAPIResponseBoarding.OnAPIResponseBoarding, OnAPIResponseDisembarking {
+class VYBeaconService : Service(), VYBoardingListener,
+        VYAPIResponseBoarding.OnAPIResponseBoarding,
+        OnAPIResponseDisembarking,
+        VYAPIResponseBeaconsList.OnAPIResponseBeacons {
 
     private var vyTicketManager: VYTicketManager? = null
     private var vyBeaconConsumer: VYBeaconConsumer? = null
@@ -30,17 +33,20 @@ class VYBeaconService : Service(), VYBoardingListener, VYAPIResponseBoarding.OnA
         // Our ticket Manager controls everything about our ticket
         vyTicketManager = VYTicketManager.getInstance()!!
 
-        // Library Beacon Consumer
-        vyBeaconConsumer = VYBeaconConsumer(this, vyTicketManager!!)
-        vyBeaconConsumer!!.start()
-
 
         // Update local repository of all beacons
         val api = VYApp.getAPI()
-        api.updateBeaconRepository()
+        api.updateBeaconRepository(this)
 
         Log.e(TAG, "VY Beacon Service initialized")
         return START_STICKY
+    }
+
+    override fun onAPIResponseBeaconsSuccess() {
+        // Beacon Consumer
+        Log.e(TAG, "/api/beacons GET Success")
+        vyBeaconConsumer = VYBeaconConsumer(this, vyTicketManager!!)
+        vyBeaconConsumer!!.start()
     }
 
 
@@ -59,11 +65,16 @@ class VYBeaconService : Service(), VYBoardingListener, VYAPIResponseBoarding.OnA
         // API CALL -> /api/boarding - body params (JSON): email, beacon_uuid
         // returns { "ticketId": "xxx", "trainDestination": "Kristiansand", "departureTime": 241425125125 }"
         val api = VYApp.getAPI()
-        api.postAPIBoarding(VYUserDetails.email, vyBeaconEncounter.uuid!!, this) // response comes in onAPIResultBoarding()
+
+        // PRESUMES we have already been detected at XXX station (triggers a possible automatic ticket scenario by being at a station)
+        val stationUUID = VYBeaconRepository.STATION_BEACON!!.uuid!!
+        val stationName = VYBeaconRepository.STATION_BEACON!!.station!!
+
+        api.postAPIBoarding(VYUserDetails.email, vyBeaconEncounter.uuid!!, stationUUID, stationName, this) // response comes in onAPIResultBoarding()
     }
 
-    override fun onAPIBoardingSuccess(ticketId: String, trainDestination: String, departureTime: Long) {
-        vyTicketManager!!.getCurrentTrip().start(ticketId, departureTime, trainDestination)
+    override fun onAPIBoardingSuccess(ticketId: String, trainDestination: String) {
+        vyTicketManager!!.getCurrentTrip().start(ticketId, trainDestination)
 
         // show notification
         VYNotification.showBoardingNotification(this, vyTicketManager!!.getCurrentTrip())
@@ -75,26 +86,28 @@ class VYBeaconService : Service(), VYBoardingListener, VYAPIResponseBoarding.OnA
     override fun onDisembarkingDetected(vyBeaconEncounter: VYBeaconEncounter?) {
         Log.e(TAG, "Station detected")
 
-        vyTicketManager!!.getCurrentTrip().stationEncounter = vyBeaconEncounter
-        vyTicketManager!!.getCurrentTrip().stop(Calendar.getInstance().time)
+        vyTicketManager!!.getCurrentTrip().disembarkingEncounter = vyBeaconEncounter
+        vyTicketManager!!.getCurrentTrip().stop()
 
-        VYNotification.showStationNotification(this, vyTicketManager!!.getCurrentTrip())
-        // TODO: API call /api/station -> get ticket price + timestamp -> update vyTicketManager.getCurrentTrip()
+        val api = VYApp.getAPI()
+        api.postAPIDisembarking(VYUserDetails.email, vyTicketManager!!.getCurrentTrip().ticketId!!, vyBeaconEncounter!!.uuid!!, this)
     }
 
-    override fun onAPIDisembarkingSuccess(duration: Long, price: Double) {
+    override fun onAPIDisembarkingSuccess(price: Int) {
+        vyTicketManager!!.getCurrentTrip().price = price
+        VYNotification.showDisembarkingNotification(this, vyTicketManager!!.getCurrentTrip())
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
-        vyBeaconConsumer!!.stopRanging()
+        if(vyBeaconConsumer != null)
+            vyBeaconConsumer!!.stopRanging()
     }
 
     companion object {
         private const val TAG = "VYBeaconService"
     }
-
 
 
 

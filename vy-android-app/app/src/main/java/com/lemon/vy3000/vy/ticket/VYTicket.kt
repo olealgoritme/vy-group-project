@@ -7,12 +7,17 @@ import java.util.*
 class VYTicket {
 
     @SerializedName("ticketId") var ticketId: String? = null
+    @SerializedName("price") var price: Int? = null
+
     var trainDestination: String? = null
+
     var arrivalTime: Date? = null
-    @SerializedName("departureTime") var departureTime: Long? = null
+    var departureTime: Date? = null
+
     var boardingEncounter: VYBeaconEncounter? = null
-    var stationEncounter: VYBeaconEncounter? = null
-    var ticketPrice: Double? = null
+    var disembarkingEncounter: VYBeaconEncounter? = null
+
+
     var started: Boolean = false
 
     fun hasStarted(): Boolean {
@@ -23,15 +28,17 @@ class VYTicket {
         return !this.started
     }
 
-    fun start(ticketId: String, departureTime: Long, trainDestination: String) {
+    fun start(ticketId: String, trainDestination: String) {
         this.ticketId = ticketId
-        this.departureTime = departureTime
+        val time = Calendar.getInstance().time
+        this.departureTime = time
         this.trainDestination = trainDestination
         this.started = true
     }
 
-    fun stop(arrivalTime: Date) {
-        this.arrivalTime = arrivalTime
+    fun stop() {
+        val time = Calendar.getInstance().time
+        this.arrivalTime = time
         this.started = false
     }
 
@@ -40,8 +47,8 @@ class VYTicket {
         this.arrivalTime = null
         this.trainDestination = null
         this.boardingEncounter = null
-        this.stationEncounter = null
-        this.ticketPrice = 0.0;
+        this.disembarkingEncounter = null
+        this.price = 0
     }
 
 

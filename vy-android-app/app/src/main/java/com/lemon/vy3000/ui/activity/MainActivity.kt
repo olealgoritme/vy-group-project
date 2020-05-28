@@ -46,10 +46,6 @@ class MainActivity : AppCompatActivity() {
         checkForNotificationIntent()
         requestPermission()
 
-        // Update local repository of all beacons
-        val api = VYApp.getAPI()
-        api.updateBeaconRepository()
-
         startService(Intent(this, VYBeaconService::class.java))
     }
 

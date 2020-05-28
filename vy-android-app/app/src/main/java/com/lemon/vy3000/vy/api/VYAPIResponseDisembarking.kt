@@ -1,12 +1,14 @@
 package com.lemon.vy3000.vy.api
 
 import android.util.Log
+import com.lemon.vy3000.vy.ticket.VYTicket
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
-class VYAPIResponseDisembarking: Callback<JSONObject> {
+class VYAPIResponseDisembarking: Callback<VYTicket> {
 
     private lateinit var listener: OnAPIResponseDisembarking
 
@@ -18,26 +20,25 @@ class VYAPIResponseDisembarking: Callback<JSONObject> {
         this.listener = listener
     }
 
-    override fun onResponse(call: Call<JSONObject>, response: Response<JSONObject>) {
+    override fun onResponse(call: Call<VYTicket>, response: Response<VYTicket>) {
+
+        Log.e(TAG, "/api/disembarking RESP: $response");
+
         if (response.isSuccessful) {
-            val json: JSONObject? = response.body()
-            Log.e(TAG, "Response body: $json");
-
-            val tripDuration = json?.get("duration") as Long
-            val price = json.get("price") as Double
-
-           this.listener.onAPIDisembarkingSuccess(tripDuration, price)
-
+            val price = response.body()!!.price
+            this.listener.onAPIDisembarkingSuccess(price as Int)
         } else {
-            Log.e(TAG, "ERR: " + response.body().toString());
+            Log.e(TAG, "/api/disembarking ERR headers: ${response.headers()}");
+            Log.e(TAG, "/api/disembarking ERR: ${response.message()}");
         }
     }
 
-    override fun onFailure(call: Call<JSONObject>, t: Throwable) {
+    override fun onFailure(call: Call<VYTicket>, t: Throwable) {
         t.printStackTrace()
     }
 }
 
 interface OnAPIResponseDisembarking {
-    fun onAPIDisembarkingSuccess(duration: Long, price: Double)
+    fun onAPIDisembarkingSuccess(price: Int)
 }
+

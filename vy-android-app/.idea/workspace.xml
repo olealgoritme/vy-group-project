@@ -6,17 +6,30 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cffd28fd-fdb8-4594-aa4a-29dcee9d3752" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/ui/activity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseBeaconList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseBeaconList.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseBoarding.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseBoarding.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseDisembarking.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseDisembarking.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeacon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeacon.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconConsumer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconConsumer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconEncounter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconEncounter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/notifications/VYNotification.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/notifications/VYNotification.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/notifications/VYNotifications.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/notifications/VYNotifications.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/ticket/VYTicket.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/ticket/VYTicket.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid108071.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/replay_pid108071.log" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

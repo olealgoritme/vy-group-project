@@ -26,10 +26,9 @@ class VYAPIResponseBoarding: Callback<VYTicket> {
 
             val ticketId = ticketInfo!!.ticketId
             val trainDestination = ticketInfo.trainDestination
-            val departureTime = ticketInfo.departureTime
 
-            if (ticketId != null && trainDestination != null && departureTime != null) {
-                this.listener.onAPIBoardingSuccess(ticketId, trainDestination, departureTime)
+            if (ticketId != null && trainDestination != null) {
+                this.listener.onAPIBoardingSuccess(ticketId, trainDestination)
             }
 
         } else {
@@ -42,7 +41,7 @@ class VYAPIResponseBoarding: Callback<VYTicket> {
     }
 
     interface OnAPIResponseBoarding {
-        fun onAPIBoardingSuccess(ticketId: String, trainDestination: String, departureTime: Long)
+        fun onAPIBoardingSuccess(ticketId: String, trainDestination: String)
     }
 }
 

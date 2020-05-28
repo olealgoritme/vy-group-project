@@ -5,16 +5,22 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import com.lemon.vy3000.vy.beacon.VYBeacon
 import com.lemon.vy3000.vy.beacon.VYBeaconRepository
-import org.altbeacon.beacon.Identifier
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class VYAPIResponseBeaconsList : Callback<MutableList<VYBeacon>> {
 
+
+    private lateinit var listener: OnAPIResponseBeacons
+
     companion object {
         private val TAG: String = javaClass::class.java.simpleName
+    }
+
+
+    fun withListener(listener: OnAPIResponseBeacons) {
+        this.listener = listener
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -26,16 +32,15 @@ class VYAPIResponseBeaconsList : Callback<MutableList<VYBeacon>> {
 
             // Setting selected boarding beacon
             val boardingBeacons = beaconList.filter { beacon -> beacon.type == "boarding"}
-            val selectedBoardingBeacon = boardingBeacons[0]
-            val selectedBoardingBeaconId = Identifier.fromUuid(UUID.fromString(selectedBoardingBeacon.uuid))
-            VYBeaconRepository.BOARDING_BEACON_ID = selectedBoardingBeaconId
-
+            VYBeaconRepository.BOARDING_BEACON = boardingBeacons[0]
 
             // Setting selected station beacon
             val stationBeacons = beaconList.filter {beacon -> beacon.type == "station"}
-            val selectedStationBeacon = stationBeacons[0]
-            val selectedStationBeaconId = Identifier.fromUuid(UUID.fromString(selectedStationBeacon.uuid))
-            VYBeaconRepository.BOARDING_BEACON_ID = selectedStationBeaconId
+            VYBeaconRepository.STATION_BEACON = stationBeacons[0]
+
+            // fire off success call to callback if lists are "full"
+            if (boardingBeacons.isNotEmpty() && stationBeacons.isNotEmpty())
+               listener.onAPIResponseBeaconsSuccess()
 
         } else {
             Log.e(TAG, response.body().toString());
@@ -44,5 +49,10 @@ class VYAPIResponseBeaconsList : Callback<MutableList<VYBeacon>> {
 
     override fun onFailure(call: Call<MutableList<VYBeacon>>, t: Throwable) {
         t.printStackTrace()
+    }
+
+
+    interface OnAPIResponseBeacons {
+        fun onAPIResponseBeaconsSuccess()
     }
 }

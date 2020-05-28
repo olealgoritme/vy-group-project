@@ -23,6 +23,12 @@
 
         <service android:name=".vy.beacon.VYBeaconService"/>
 
+
+        <service android:name="org.altbeacon.beacon.service.BeaconService"
+            tools:node="replace">
+            <meta-data android:name="longScanForcingEnabled" android:value="true"/>
+        </service>
+
         <activity
             android:name=".ui.activity.MainActivity"
             android:launchMode="singleInstance"

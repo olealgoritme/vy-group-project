@@ -1,8 +1,8 @@
 package com.lemon.vy3000.vy.api
 
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import org.altbeacon.beacon.Identifier
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -18,34 +18,34 @@ class VYAPIController {
         .build()
     }
 
-    fun updateBeaconRepository() {
+    fun updateBeaconRepository(listener: VYAPIResponseBeaconsList.OnAPIResponseBeacons) {
         val vyBackendAPI = retrofit.create(VYAPIInterface::class.java)
         val call = vyBackendAPI.updateBeaconRepository()
 
         val responder = VYAPIResponseBeaconsList()
+        responder.withListener(listener)
         call.enqueue(responder)
     }
 
-    fun postAPIBoarding(email: String, beaconUUID: Identifier, listener: VYAPIResponseBoarding.OnAPIResponseBoarding) {
+    fun postAPIBoarding(email: String, boardingUUID: String, stationUUID: String, stationName: String, listener: VYAPIResponseBoarding.OnAPIResponseBoarding) {
         val vyBackendAPI = retrofit.create(VYAPIInterface::class.java)
-        val call = vyBackendAPI.postBoarding(VYAPIInterface.BoardingData(email, beaconUUID))
+        val call = vyBackendAPI.postBoarding(VYAPIInterface.BoardingData(email, boardingUUID, stationUUID, stationName))
 
         val responder = VYAPIResponseBoarding()
         responder.withListener(listener)
         call.enqueue(responder)
     }
 
-    fun postAPIDisembarking(ticketId: String, listener: OnAPIResponseDisembarking) {
+    fun postAPIDisembarking(email: String, ticketId: String, beaconUUID: String, listener: OnAPIResponseDisembarking) {
+
+        Log.e("API Post", "Disembarking -> $email : $ticketId : $beaconUUID")
         val vyBackendAPI = retrofit.create(VYAPIInterface::class.java)
-        val call = vyBackendAPI.postDisembarking(VYAPIInterface.StationData(ticketId))
+        val call = vyBackendAPI.postDisembarking(VYAPIInterface.DisembarkingData(email, ticketId, beaconUUID))
 
         val responder = VYAPIResponseDisembarking()
         responder.withListener(listener)
         call.enqueue(responder)
     }
-
-
-
 
     companion object {
         const val BASE_URL = "https://vy-automatic-ticketing-system.web.app"

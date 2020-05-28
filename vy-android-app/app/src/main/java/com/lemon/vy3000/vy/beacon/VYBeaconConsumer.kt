@@ -37,6 +37,9 @@ class VYBeaconConsumer(private val boardingListener: VYBoardingListener, private
 
             for (beacon in beacons) {
 
+                val beaconId = beacon.id1.toString()
+                Log.e("Consumer", "Converted beacon id to string: $beaconId")
+
                 // Boarding detection
                 if (hasFoundBoardingBeacon(beacon) && satisfyConditions()) {
                     val vyBeaconEncounter = VYBeaconEncounter.getData(beacon)
@@ -46,6 +49,8 @@ class VYBeaconConsumer(private val boardingListener: VYBoardingListener, private
                 // Disembarking detection
                 if (hasFoundStationBeacon(beacon) && satisfyConditions()) {
                     val vyBeaconEncounter = VYBeaconEncounter.getData(beacon)
+                    val beaconId = beacon.id1.toString()
+                    vyBeaconEncounter.vyBeacon = VYBeaconRepository.getBeaconByID(beaconId)
                     boardingListener.onDisembarkingDetected(vyBeaconEncounter)
                 }
             }
@@ -56,7 +61,7 @@ class VYBeaconConsumer(private val boardingListener: VYBoardingListener, private
             } catch (e: RemoteException) {
                 Log.e(TAG, "CANT START BEACON RANGING")
             } finally {
-                Log.e(TAG, "Beacon Ranging started in region: " + newRegion.id1)
+                Log.e(TAG, "Beacon Ranging started")
             }
     }
 
@@ -66,15 +71,16 @@ class VYBeaconConsumer(private val boardingListener: VYBoardingListener, private
 
     // DEFINITION OF BOARDING DETECTED
     private fun hasFoundBoardingBeacon(beacon: Beacon): Boolean {
-        return VYBeaconRepository.compareTo(VYBeaconRepository.BOARDING_BEACON_ID, beacon.id1)
+        return VYBeaconRepository.compareTo(VYBeaconRepository.STATION_BEACON!!.uuid!!, beacon.id1.toString())
                 && beacon.distance < 3
-                && !vyTicketManager.getCurrentTrip().hasStarted()
+                && ! vyTicketManager.getCurrentTrip().hasStarted()
     }
 
     // DEFINITION OF DISEMBARKING DETECTED
     private fun hasFoundStationBeacon(beacon: Beacon): Boolean {
-        return VYBeaconRepository.compareTo(VYBeaconRepository.STATION_BEACON_ID, beacon.id1)
+        return VYBeaconRepository.compareTo(VYBeaconRepository.STATION_BEACON!!.uuid!!, beacon.id1.toString())
                 && vyTicketManager.getCurrentTrip().hasStarted()
+                && ! vyTicketManager.getCurrentTrip().hasEnded()
     }
 
     // Detect min 2 interval detections

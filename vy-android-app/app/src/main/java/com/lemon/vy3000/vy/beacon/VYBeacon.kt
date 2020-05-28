@@ -1,7 +1,6 @@
 package com.lemon.vy3000.vy.beacon
 
 import com.google.gson.annotations.SerializedName
-import org.altbeacon.beacon.Identifier
 
 class VYBeacon {
 
