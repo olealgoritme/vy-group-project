@@ -16,23 +16,28 @@ const mockPhotos = require('./mock-responses/photos');
 
 app.post('/api/boarding', (req, res) => {
     const email = req.body.email;
-    const beacon_uuid = req.body.beacon_uuid;
-    const timestamp = Date.now();
+    const boardingUuid = req.body.boarding_uuid;
+    const stationUuid = req.body.station_uuid;
+    const stationName = req.body.station_name;
+    const timestamp = Date.now() + 7200000;
 
     firestore.collection("users").doc(email).collection("tickets").add({
-        startStation: beacon_uuid,
+        startStation: stationName,
         startTimestamp: timestamp,
         endStation: "",
         endTimestamp: 0,
-        price: 0
+        price: 0,
+        boardingUuid: boardingUuid
     }).then((doc) => {
         firestore.collection("users").doc(email).set({email: email});
+        firestore.collection("vy_beacon_list").doc(boardingUuid).update({"numBoarded": admin.firestore.FieldValue.increment(1)});
+
         return res.json({
             ticketId: doc.id,
-            trainDestination: "Kristiansand",
-            departureTime: timestamp
+            trainDestination: "Kongsvinger"
         })
     }).catch((error) => {
+        console.log(error);
         return res.status(400).json({"message": "Unable to connect to Firestore."});
     });
 });
@@ -43,7 +48,7 @@ app.post('/api/disembarking', (req, res) => {
     const beacon_uuid = req.body.beacon_uuid;
 
     const price = 50.0; // Double
-    const endTimestamp = Date.now();
+    const endTimestamp = Date.now() + 7200000;
     const ticketDocRef = firestore.collection("users").doc(email).collection("tickets").doc(ticketId);
     const beaconDocRef = firestore.collection("vy_beacon_list").doc(beacon_uuid);
 
@@ -53,16 +58,14 @@ app.post('/api/disembarking', (req, res) => {
             const beaconDoc = docs[1];
 
             transaction.update(ticketDocRef, {
-                end_station: beaconDoc.data().station,
-                end_timestamp: endTimestamp,
+                endStation: beaconDoc.data().station,
+                endTimestamp: endTimestamp,
                 price: price
             });
 
-            const startTimestamp = ticketDoc.data().start_timestamp;
-            const duration = endTimestamp - startTimestamp;
+            firestore.collection("vy_beacon_list").doc(ticketDoc.data().boardingUuid).update({"numBoarded": admin.firestore.FieldValue.increment(-1)})
 
             return res.json({
-                duration: duration,
                 price: price
             })
         });
@@ -108,25 +111,32 @@ app.get("/api/tickets", (req, res) => {
         return Promise.all(promises).then(results => {
             results.forEach(querySnapshot => {
                 querySnapshot.forEach(doc => {
-                    const boardTimestamp = new Date(doc.data().start_timestamp).toLocaleString("no-NO");
-                    let disembarkTimestamp = new Date(doc.data().end_timestamp).toLocaleString("no-NO");
-                    let endStation = doc.data().end_station;
+                    let boardTimestamp = new Date(doc.data().startTimestamp);
+                    let disembarkTimestamp = new Date(doc.data().endTimestamp);
+                    let diff = disembarkTimestamp - boardTimestamp;
+                    let minutesTaken = Math.floor((diff / 1000) / 60);
+
+                    let endStation = doc.data().endStation;
                     let price = doc.data().price + " NOK";
-                    let timeTaken = 0;
                     email = doc.ref.parent.parent.id;
 
+                    boardTimestamp = new Date(boardTimestamp).toLocaleString("no-NO");
+                    disembarkTimestamp = new Date(disembarkTimestamp).toLocaleString("no-NO");
+
                     if (endStation === "") {
-                        timeTaken = "N/A";
+                        minutesTaken = "N/A";
                         price = "N/A";
                         disembarkTimestamp = "N/A";
                         endStation = "N/A";
+                    } else {
+                        minutesTaken = minutesTaken + " minutes";
                     }
 
                     tickets.push({
                         "email": email,
-                        "startingStation": doc.data().start_station,
+                        "startingStation": doc.data().startStation,
                         "endingStation": endStation,
-                        "time_taken": timeTaken,
+                        "timeTaken": minutesTaken,
                         "boarded": boardTimestamp,
                         "disembarked": disembarkTimestamp,
                         "price": price
@@ -139,6 +149,51 @@ app.get("/api/tickets", (req, res) => {
     }).catch((error) => {
         return res.status(400).json({"message": "Unable to connect to Firestore."});
     });
+});
+
+app.get("/api/capacity", (req, res) => {
+    const beaconCollection = firestore.collection("vy_beacon_list").where("type", "==", "boarding");
+    const trainCapacities = [];
+    const trainNumbers = [];
+
+    beaconCollection.get().then(querySnapshot => {
+        const boardingBeacons = querySnapshot.docs.filter(doc => doc.data().type === "boarding");
+
+        boardingBeacons.forEach(doc => {
+            console.log("beacon" + doc.data());
+            if (trainNumbers.indexOf(doc.data().trainNumber) === -1) {
+                trainNumbers.push(doc.data().trainNumber);
+            }
+        });
+
+        trainNumbers.forEach(trainNumber => {
+            const trainBeacons = boardingBeacons.filter(doc => doc.data().trainNumber === trainNumber);
+            const maxCapacity = trainBeacons.map(doc => doc.data().carriageCapacity).reduce((sum, current) => sum + current, 0);
+            const usedCapacity = trainBeacons.map(doc => doc.data().numBoarded).reduce((sum, current) => sum + current, 0);
+
+            trainCapacities.push(
+                {
+                    "trainNumber": trainNumber,
+                    "maxCapacity": maxCapacity,
+                    "usedCapacity": usedCapacity,
+                    "trainBeacons": trainBeacons.map(doc => {
+                        return ({
+                            "uuid": doc.data().uuid,
+                            "carriageCapacity": doc.data().carriageCapacity,
+                            "carriageNumber": doc.data().trainCarriageNumber,
+                            "numBoarded": doc.data().numBoarded
+                        })
+                    })
+            
+                }
+            )
+        })
+
+        return res.json(trainCapacities);
+    }).catch(error => {
+        console.log(error);
+        return res.json(error);
+    })
 });
 
 app.get('/api/photos', (req, res) => {

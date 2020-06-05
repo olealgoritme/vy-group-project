@@ -17,3 +17,4 @@ ctags
 .tags
 .ctags
 */*tags*
+/vy-smidig-react/node_modules

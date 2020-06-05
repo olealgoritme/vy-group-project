@@ -1,37 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
-import 'react-dates/initialize';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-// styles for this kit
-import "assets/css/bootstrap.min.css";
-import "assets/scss/now-ui-kit.scss";
-import "assets/demo/demo.css";
-import "assets/demo/nucleo-icons-page-styles.css";
 
-// pages for this kit
-import Index from "views/Index.js";
-import NucleoIcons from "views/NucleoIcons.js";
-import LoginPage from "views/LoginPage.js";
-import LandingPage from "views/LandingPage.js";
+import store from './store';
 
-ReactDOM.render(
-    <BrowserRouter>
-        <Switch>
-            <Switch>
-                <Route
-                    path="/nucleo-icons"
-                    render={props => <NucleoIcons {...props} />}
-                />
-                <Route
-                    path="/landing-page"
-                    render={props => <LandingPage {...props} />}
-                />
-                <Route path="/login-page" render={props => <LoginPage {...props} />} />
-                <Redirect to="/index" />
-                <Redirect from="/" to="/login-page" />
-            </Switch>
-        </Switch>
-    </BrowserRouter>,
-    document.getElementById("root")
+const app = (
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>
 );
+
+ReactDOM.render(app, document.getElementById('root'));
+serviceWorker.unregister();
