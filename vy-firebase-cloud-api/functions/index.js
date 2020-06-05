@@ -160,7 +160,6 @@ app.get("/api/capacity", (req, res) => {
         const boardingBeacons = querySnapshot.docs.filter(doc => doc.data().type === "boarding");
 
         boardingBeacons.forEach(doc => {
-            console.log("beacon" + doc.data());
             if (trainNumbers.indexOf(doc.data().trainNumber) === -1) {
                 trainNumbers.push(doc.data().trainNumber);
             }
