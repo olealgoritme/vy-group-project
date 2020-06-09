@@ -119,7 +119,7 @@ class Dashboard extends Component {
                             <Col xl="4">
                                 <Card>
                                     <CardBody>
-                                        <h4 className="mt-0 header-title mb-4">Weekly Travels</h4>
+                                        <h4 className="mt-0 header-title mb-4">Travels Last 7 Days</h4>
                                         <div id="area-chart">
                                             <Apexarea />
                                         </div>
