@@ -1,8 +1,28 @@
-## Project
+#### Smidig skoleprosjekt 2019/2020 ####
+
+Prosjekt for: Vy
+
+8 personer på gruppen:
+Hilde-Marie
+Elena
+Martin
+Robert
+Mohammed
+Jonas
+Ole
+Marius
 
 
-## How to use this repo?
-- ONLY create branches. If you have something to add to project, create a PULL REQUEST.
-- Thank you!
+#### Prosjektet inneholder ####
+Dokumentasjon
+Markedsplan
+Android-App
+Webpanel i React ++
+Backend Proxy API i Express ++
+Backend Database, Google Firebase
+
+
+
+
 
 
