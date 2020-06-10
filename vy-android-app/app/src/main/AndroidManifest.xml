@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lemon.vy3000">
 
-    <!-- <dist:module dist:instant="true" /> -->
+    <uses-feature android:name="android.hardware.bluetooth_ble" android:required="true"/>
 
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
@@ -22,7 +22,6 @@
         android:supportsRtl="true">
 
         <service android:name=".vy.beacon.VYBeaconService"/>
-
 
         <service android:name="org.altbeacon.beacon.service.BeaconService"
             tools:node="replace">

@@ -28,6 +28,9 @@ class VYAPIController {
     }
 
     fun postAPIBoarding(email: String, boardingUUID: String, stationUUID: String, stationName: String, listener: VYAPIResponseBoarding.OnAPIResponseBoarding) {
+
+        Log.e("API Post", "Boarding -> $email : boarding_uuid:$boardingUUID : station_uuid:$stationUUID : station_name:$stationName")
+
         val vyBackendAPI = retrofit.create(VYAPIInterface::class.java)
         val call = vyBackendAPI.postBoarding(VYAPIInterface.BoardingData(email, boardingUUID, stationUUID, stationName))
 
@@ -38,7 +41,7 @@ class VYAPIController {
 
     fun postAPIDisembarking(email: String, ticketId: String, beaconUUID: String, listener: OnAPIResponseDisembarking) {
 
-        Log.e("API Post", "Disembarking -> $email : $ticketId : $beaconUUID")
+        Log.e("API Post", "Disembarking -> email:$email : ticket_id:$ticketId : station_uuid:$beaconUUID")
         val vyBackendAPI = retrofit.create(VYAPIInterface::class.java)
         val call = vyBackendAPI.postDisembarking(VYAPIInterface.DisembarkingData(email, ticketId, beaconUUID))
 

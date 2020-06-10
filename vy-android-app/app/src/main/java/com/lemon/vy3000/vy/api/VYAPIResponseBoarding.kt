@@ -2,7 +2,6 @@ package com.lemon.vy3000.vy.api
 
 import android.util.Log
 import com.lemon.vy3000.vy.ticket.VYTicket
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,7 +21,6 @@ class VYAPIResponseBoarding: Callback<VYTicket> {
     override fun onResponse(call: Call<VYTicket>, response: Response<VYTicket>) {
         if (response.isSuccessful) {
             val ticketInfo = response.body()
-            Log.e(TAG, "Got /api/boarding response: $ticketInfo");
 
             val ticketId = ticketInfo!!.ticketId
             val trainDestination = ticketInfo.trainDestination
@@ -32,7 +30,7 @@ class VYAPIResponseBoarding: Callback<VYTicket> {
             }
 
         } else {
-            Log.e(TAG, "err:" + response.body().toString());
+            Log.e(TAG, "/api/boarding/ ERR:" + response.body().toString());
         }
     }
 

@@ -6,38 +6,65 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cffd28fd-fdb8-4594-aa4a-29dcee9d3752" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/misc/SnackbarWrapper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/app/VYApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/app/VYApp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/misc/SnackbarWrapper.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/ui/activity/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIInterface.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseBeaconList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseBeaconList.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseBoarding.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseBoarding.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseDisembarking.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/api/VYAPIResponseDisembarking.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeacon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeacon.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconConsumer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconConsumer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconEncounter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconEncounter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/beacon/VYBeaconService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/notifications/VYNotification.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/notifications/VYNotification.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/notifications/VYNotifications.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/notifications/VYNotifications.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/ticket/VYTicket.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/vy/ticket/VYTicket.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid108071.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/replay_pid108071.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-nb/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-nb/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_29_x86" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="DUM0219309003840" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -118,6 +145,11 @@
   </component>
   <component name="ProjectId" id="1bnZNsbK5UfnO7iHhWzivzGZhYO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -126,10 +158,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi-v4" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ScreenCapture" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -159,18 +192,6 @@
       <recent name="$PROJECT_DIR$/app/src/main/java/com/lemon/vy3000/ui/favourites" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi-v4" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -321,6 +342,31 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/home/xuw/android/android_projects/vy-group-project/vy-android-app/app/src/main/java/com/lemon/vy3000" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -330,5 +376,52 @@
         </entry>
       </map>
     </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1937" y="172" width="808" height="672" key="#Notifications" timestamp="1591283374805">
+      <screen x="0" y="0" width="3840" height="1044" />
+    </state>
+    <state x="1937" y="172" width="808" height="672" key="#Notifications/0.0.3840.1044@0.0.3840.1044" timestamp="1591283374805" />
+    <state x="1714" y="238" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591804319825">
+      <screen x="0" y="0" width="3840" height="1044" />
+    </state>
+    <state x="1714" y="238" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.3840.1044@0.0.3840.1044" timestamp="1591804319825" />
+    <state x="2664" y="282" key="FileChooserDialogImpl" timestamp="1591282084160">
+      <screen x="0" y="0" width="3840" height="1044" />
+    </state>
+    <state x="2664" y="282" key="FileChooserDialogImpl/0.0.3840.1044@0.0.3840.1044" timestamp="1591282084160" />
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1591816248903">
+      <screen x="0" y="0" width="3840" height="1044" />
+    </state>
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.3840.1044@0.0.3840.1044" timestamp="1591816248903" />
+    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1591816248903">
+      <screen x="0" y="0" width="3840" height="1044" />
+    </state>
+    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.3840.1044@0.0.3840.1044" timestamp="1591816248903" />
+    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1591816248903">
+      <screen x="0" y="0" width="3840" height="1044" />
+    </state>
+    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.3840.1044@0.0.3840.1044" timestamp="1591816248903" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1591816248903">
+      <screen x="0" y="0" width="3840" height="1044" />
+    </state>
+    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.3840.1044@0.0.3840.1044" timestamp="1591816248903" />
+    <state x="2185" y="78" key="SettingsEditor" timestamp="1591182791550">
+      <screen x="0" y="0" width="3840" height="1044" />
+    </state>
+    <state x="2185" y="78" key="SettingsEditor/0.0.3840.1044@0.0.3840.1044" timestamp="1591182791550" />
+    <state x="2569" y="222" width="551" height="610" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591813733048">
+      <screen x="0" y="0" width="3840" height="1044" />
+    </state>
+    <state x="2569" y="222" width="551" height="610" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.3840.1044@0.0.3840.1044" timestamp="1591813733048" />
+    <state x="2489" y="148" width="628" height="759" key="find.popup" timestamp="1591816404681">
+      <screen x="0" y="0" width="3840" height="1044" />
+    </state>
+    <state x="2489" y="148" width="628" height="759" key="find.popup/0.0.3840.1044@0.0.3840.1044" timestamp="1591816404681" />
   </component>
 </project>

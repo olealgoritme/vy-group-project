@@ -2,9 +2,7 @@ package com.lemon.vy3000.vy.notifications
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.text.Html
@@ -13,7 +11,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.lemon.vy3000.R
 import com.lemon.vy3000.app.VYApp
-import com.lemon.vy3000.ui.activity.MainActivity
 import com.lemon.vy3000.vy.ticket.VYTicket
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -43,42 +40,66 @@ object VYNotification {
 
     @JvmStatic
     fun showDisembarkingNotification(ctx: Context, vyTicket: VYTicket) {
-        val disembark = Intent(ctx, MainActivity::class.java)
-        disembark.putExtra("onNotificationClick", "onClickDisembark")
+        var station = vyTicket.disembarkingEncounter?.vyBeacon?.station
+        if (station.isNullOrBlank()) station = "Nerdrum"
 
-        val pBoarded = PendingIntent.getActivity(ctx, 0, disembark, 0)
-        val inboxStyle = NotificationCompat.InboxStyle()
-        inboxStyle.setBigContentTitle(Html.fromHtml("<b>Avstigning: " + vyTicket.disembarkingEncounter!!.vyBeacon!!.station + " stasjon - R11 til " + vyTicket.trainDestination  + "</b>"))
-        inboxStyle.addLine(Html.fromHtml("Billett avsluttet<br>Betalt: "+ vyTicket.price + ",-"))
+        val max = 100
+        val progress = 45
 
-        val builder = NotificationCompat.Builder(ctx, "vy")
-                .setStyle(inboxStyle)
-                .setChannelId("vy")
-                .setAutoCancel(true)
-                .setSmallIcon(R.drawable.vy_logo)
-                .setPriority(NotificationCompat.PRIORITY_MAX)
+        val builder = NotificationCompat.Builder(ctx, "vy").apply {
+            setContentTitle(Html.fromHtml("<b>Avstigning: " + station + " - " + " Tognr. 1003 til " + vyTicket.trainDestination + "</b>"))
+            setSubText(Html.fromHtml("Billett avsluttet. Betalt: kr " + vyTicket.price + ",-"))
+            setSmallIcon(R.drawable.vy_logo)
+            setProgress(max, progress, false)
+            setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+            priority = NotificationCompat.PRIORITY_MAX
 
+        }
         notificationManager?.notify(0, builder.build())
     }
 
     @JvmStatic
     fun showBoardingNotification(ctx: Context, vyTicket: VYTicket) {
+        val max = 100
+        val progress = 25
 
-        val board = Intent(ctx, MainActivity::class.java);
-        board.putExtra("onNotificationClick", "onClickBoard");
+        val builder = NotificationCompat.Builder(ctx, "vy").apply {
+            setContentTitle(Html.fromHtml("<b>Påstigning: Oslo S" + " - Tognr. 1003 til " + vyTicket.trainDestination + "</b>"))
+            setSubText(Html.fromHtml("Billett aktivert"))
+            setSmallIcon(R.drawable.vy_logo)
+            setProgress(max, progress, false)
+            setVisibility(NotificationCompat.VISIBILITY_PUBLIC) // visible from lock screen
+            priority = NotificationCompat.PRIORITY_MAX
+        }
+        notificationManager?.notify(0, builder.build());
 
-        val pBoarded = PendingIntent.getActivity(ctx, 0, board, 0);
-        val inboxStyle= NotificationCompat.InboxStyle()
+    }
 
-        inboxStyle.setBigContentTitle(Html.fromHtml("<b>Påstigning: Tog R11 til " +  vyTicket.trainDestination + "</b>"))
-        inboxStyle.addLine(Html.fromHtml("Billett aktivert"));
+    @JvmStatic
+    fun cancelAll() {
+        notificationManager?.cancel(0)
+        notificationManager?.cancelAll()
+    }
 
-        val builder = NotificationCompat.Builder(ctx, "vy")
-                .setStyle(inboxStyle)
-                .setChannelId("vy")
-                .setAutoCancel(true)
-                .setSmallIcon(R.drawable.vy_logo)
-                .setPriority(NotificationCompat.PRIORITY_MAX)
+    @JvmStatic
+    fun showTrainInformation(ctx: Context) {
+
+        val style = NotificationCompat.BigTextStyle()
+        style.bigText(
+                "\nForventet avgang: kl 14:41" +
+                    "\nSitteplasser: 144/390" +
+                    "\nLedige vogner: 4, 5, 7, 9")
+
+
+        val builder = NotificationCompat.Builder(ctx, "vy").apply {
+
+            setStyle(style)
+            setContentTitle(Html.fromHtml("<b>Tog fra Oslo S med avgang kl 14:34 er forsinket</b>"))
+            setSubText(Html.fromHtml("Forsinkelser"))
+            setSmallIcon(R.drawable.vy_logo)
+            setVisibility(NotificationCompat.VISIBILITY_PUBLIC) // visible from lock screen
+            priority = NotificationCompat.PRIORITY_MAX
+        }
         notificationManager?.notify(0, builder.build());
     }
 }

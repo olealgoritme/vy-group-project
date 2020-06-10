@@ -3,7 +3,6 @@ package com.lemon.vy3000.vy.api
 import com.google.gson.annotations.SerializedName
 import com.lemon.vy3000.vy.beacon.VYBeacon
 import com.lemon.vy3000.vy.ticket.VYTicket
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.*
 

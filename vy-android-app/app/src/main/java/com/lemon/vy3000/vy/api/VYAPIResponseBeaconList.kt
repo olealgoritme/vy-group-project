@@ -29,7 +29,6 @@ class VYAPIResponseBeaconsList : Callback<MutableList<VYBeacon>> {
         if (response.isSuccessful) {
             val beaconList = response.body()!!
 
-
             // Setting selected boarding beacon
             val boardingBeacons = beaconList.filter { beacon -> beacon.type == "boarding"}
             VYBeaconRepository.BOARDING_BEACON = boardingBeacons[0]
@@ -43,7 +42,7 @@ class VYAPIResponseBeaconsList : Callback<MutableList<VYBeacon>> {
                listener.onAPIResponseBeaconsSuccess()
 
         } else {
-            Log.e(TAG, response.body().toString());
+            Log.e(TAG, "/api/beacons ERR: " + response.body().toString())
         }
     }
 

@@ -9,23 +9,15 @@ class VYTicket {
     @SerializedName("ticketId") var ticketId: String? = null
     @SerializedName("price") var price: Int? = null
 
+    private var arrivalTime: Date? = null
+    private var departureTime: Date? = null
+    private var started: Boolean = false
     var trainDestination: String? = null
-
-    var arrivalTime: Date? = null
-    var departureTime: Date? = null
-
     var boardingEncounter: VYBeaconEncounter? = null
     var disembarkingEncounter: VYBeaconEncounter? = null
 
-
-    var started: Boolean = false
-
     fun hasStarted(): Boolean {
         return this.started
-    }
-
-    fun hasEnded(): Boolean {
-        return !this.started
     }
 
     fun start(ticketId: String, trainDestination: String) {
