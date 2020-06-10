@@ -24,20 +24,19 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.props.activateAuthLayout();
-
-        fetch("https://vy-automatic-ticketing-system.web.app/api/tickets").then(res => res.json()).then(
-            (result) => {this.setState({tickets: result.tickets})},
-            (error) => {this.setState({error})}
-        )
-
-        fetch("https://vy-automatic-ticketing-system.web.app/api/capacity").then(res => res.json()).then(
-            (result) => {this.setState({capacities: result})},
-            (error) => {this.setState({error})}
-        )
-
-        fetch("https://vy-automatic-ticketing-system.web.app/api/beacons").then(res => res.json()).then(
-            (result) => {this.setState({beacons: result})},
-            (error) => {this.setState({error})}
+        
+        Promise.all([
+            fetch("https://vy-automatic-ticketing-system.web.app/api/tickets"),
+            fetch("https://vy-automatic-ticketing-system.web.app/api/capacity"),
+            fetch("https://vy-automatic-ticketing-system.web.app/api/beacons")
+        ]).then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json(), res3.json()])).then(
+            ([ticketsJSON, capacitiesJSON, beaconsJSON]) => {
+                this.setState({
+                    tickets: ticketsJSON.tickets,
+                    capacities: capacitiesJSON,
+                    beacons: beaconsJSON
+                })
+            }
         )
     }
 
