@@ -15,7 +15,7 @@ app.post('/api/boarding', (req, res) => {
     const boardingUuid = req.body.boarding_uuid;
     const stationUuid = req.body.station_uuid;
     const stationName = req.body.station_name;
-    const timestamp = Date.now() + 7200000;
+    const timestamp = Date.now() + 7200000; // +2 hours for Norwegian timezone - terrible solution but works for now
 
     firestore.collection("users").doc(email).collection("tickets").add({
         startStation: stationName,
@@ -73,12 +73,9 @@ app.post('/api/disembarking', (req, res) => {
 
 app.get("/api/users", (req, res) => {
     const collection = firestore.collection("users");
-    let users = [];
 
     collection.get().then((querySnapshot) => {
-        querySnapshot.forEach(doc => {
-            users.push({"email": doc.id});
-        });
+        const users = querySnapshot.docs.map(doc => {return ({"email": doc.id});});
 
         return res.json({"users": users});
     }).catch((error) => {
@@ -149,39 +146,31 @@ app.get("/api/tickets", (req, res) => {
 
 app.get("/api/capacity", (req, res) => {
     const beaconCollection = firestore.collection("vy_beacon_list").where("type", "==", "boarding");
-    const trainCapacities = [];
-    const trainNumbers = [];
 
     beaconCollection.get().then(querySnapshot => {
         const boardingBeacons = querySnapshot.docs.filter(doc => doc.data().type === "boarding");
+        const trainNumbers = boardingBeacons.map(doc => doc.data().trainNumber).filter((trainNumber, index, self) => self.indexOf(trainNumber) === index);
 
-        boardingBeacons.forEach(doc => {
-            if (trainNumbers.indexOf(doc.data().trainNumber) === -1) {
-                trainNumbers.push(doc.data().trainNumber);
-            }
-        });
-
-        trainNumbers.forEach(trainNumber => {
+        const trainCapacities = trainNumbers.map(trainNumber => {
             const trainBeacons = boardingBeacons.filter(doc => doc.data().trainNumber === trainNumber);
             const maxCapacity = trainBeacons.map(doc => doc.data().carriageCapacity).reduce((sum, current) => sum + current, 0);
             const usedCapacity = trainBeacons.map(doc => doc.data().numBoarded).reduce((sum, current) => sum + current, 0);
 
-            trainCapacities.push(
-                {
-                    "trainNumber": trainNumber,
-                    "maxCapacity": maxCapacity,
-                    "usedCapacity": usedCapacity,
-                    "trainBeacons": trainBeacons.map(doc => {
-                        return ({
-                            "uuid": doc.data().uuid,
-                            "carriageCapacity": doc.data().carriageCapacity,
-                            "carriageNumber": doc.data().trainCarriageNumber,
-                            "numBoarded": doc.data().numBoarded
-                        })
-                    })
-            
-                }
-            )
+            const carriageBeaconInfo = trainBeacons.map(doc => {
+                return ({
+                    "uuid": doc.data().uuid,
+                    "carriageCapacity": doc.data().carriageCapacity,
+                    "carriageNumber": doc.data().trainCarriageNumber,
+                    "numBoarded": doc.data().numBoarded
+                })
+            })
+
+            return ({
+                "trainNumber": trainNumber,
+                "maxCapacity": maxCapacity,
+                "usedCapacity": usedCapacity,
+                "trainBeacons": carriageBeaconInfo
+            })
         })
 
         return res.json(trainCapacities);
@@ -194,11 +183,10 @@ app.get("/api/capacity", (req, res) => {
 app.get('/api/beacons', (req, res) => {
     void (req);
     const beaconCollection = firestore.collection("vy_beacon_list");
-    const beacons = [];
 
     beaconCollection.get().then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-            beacons.push({
+        const beacons = querySnapshot.docs.map(doc => {
+            return ({
                 "uuid": doc.data().uuid,
                 "trainCarriageNumber": doc.data().trainCarriageNumber,
                 "trainNumber": doc.data().trainNumber,
@@ -210,6 +198,7 @@ app.get('/api/beacons', (req, res) => {
 
         return res.json(beacons)
     }).catch(error => {
+        console.log(error);
         return res.status(400).json({"message": error});
     })
 });
