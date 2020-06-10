@@ -17,15 +17,15 @@ const SideNav = () => { return <div id="sidebar-menu">
                             </li>
 
                             <li>
-                                <Link to="tables-datatable" className="waves-effect waves-light"><i className="ion ion-md-list"></i><span> Customer Travels </span></Link>
+                                <Link to="travels" className="waves-effect waves-light"><i className="ion ion-md-list"></i><span> Customer Travels </span></Link>
                             </li>
 
                             <li>
-                                <Link to="projects" className="waves-effect waves-light"><i className="ion ion-md-train"></i><span> Train Space </span></Link>
+                                <Link to="space-overview" className="waves-effect waves-light"><i className="ion ion-md-train"></i><span> Train Space </span></Link>
                             </li>
 
                             <li>
-                                <Link to="maps-google" className="waves-effect waves-light"><i className="ion ion-md-pin"></i><span> Beacon Locations </span></Link>
+                                <Link to="beacons" className="waves-effect waves-light"><i className="ion ion-md-pin"></i><span> Beacon Locations </span></Link>
                             </li>
 
                         </ul>

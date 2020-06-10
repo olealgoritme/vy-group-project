@@ -109,7 +109,7 @@ const routes = [
     { path: '/ecommerce-order-history', component: Ecommerceorderhistory },
     { path: '/ecommerce-customers', component: Ecommercecustomers },
     { path: '/ecommerce-product-edit', component: Ecommerceproductedit },
-    { path: '/projects', component: Projects },
+    { path: '/space-overview', component: Projects },
 
     { path: '/pages-login-2', component: Pageslogin2 },
     { path: '/pages-register-2', component: Pagesregister2 },
@@ -153,7 +153,7 @@ const routes = [
     { path: '/form-mask', component: Formmask },
 
     { path: '/tables-basic', component: Tablebasic },
-    { path: '/tables-datatable', component: Tabledatatable },
+    { path: '/travels', component: Tabledatatable },
     { path: '/tables-responsive', component: Tableresponsive },
     { path: '/tables-editable', component: Tableseditable },
 
@@ -163,7 +163,7 @@ const routes = [
     { path: '/icons-themify', component: Iconsthemify },
     { path: '/icons-dripicons', component: Iconsdripicons },
 
-    { path: '/maps-google', component: Mapsgoogle },
+    { path: '/beacons', component: Mapsgoogle },
     { path: '/maps-vector', component: Mapsvector },
 
     { path: '/layout-collapsed-sidebar', component: Dashboard },
