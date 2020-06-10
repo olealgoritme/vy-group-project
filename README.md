@@ -3,23 +3,23 @@
 Prosjekt for: Vy
 
 8 personer på gruppen:
-Hilde-Marie
-Elena
-Martin
-Robert
-Mohammed
-Jonas
-Ole
+Hilde-Marie,
+Elena,
+Martin,
+Robert,
+Mohammed,
+Jonas,
+Ole,
 Marius
 
 
 #### Prosjektet inneholder ####
-Dokumentasjon
-Markedsplan
-Android-App
-Webpanel i React ++
-Backend Proxy API i Express ++
-Backend Database, Google Firebase
+Dokumentasjon,
+Markedsplan,
+Android-App,
+Webpanel i React ++,
+Backend Proxy API i Express ++,
+Backend Database, Google Firebase,
 
 
 
